@@ -49,7 +49,7 @@ the next step is to push your changes to the master repository or
 'origin master'. to do this you must first ensure that you are up to date
 with master. do this by pulling from the master. Note you can only pull, if
 your local repo is clean, if it is dirty git will tell you to commit any changes to
-untracked files. the command is:
+tracked files. the command is:
 
 $ git pull origin master
 
