@@ -9,14 +9,8 @@ public class RectangularGrid implements Grid {
 	
 	public RectangularGrid(int size) {
 		this.size = size;
-		this.tiles = new ArrayList< ArrayList<Tile> >(size);
-		for (int i = 0; i < size; i++) {
-			tiles.set(i, new ArrayList<Tile>(size));
-			for (int j = 0; j < size; j++) {
-				tiles.get(i).set(j, new Tile(new HashMap<Integer,Tile>()));
-			}
-		}
-		// generate grid
+		RectangularGridGenerator generator = new RandomDFS(size);
+		this.tiles = generator.generate();
 	}
 	
 	public int getSize() {
