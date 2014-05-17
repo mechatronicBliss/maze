@@ -84,6 +84,7 @@ public class MazeGen {
 		//or seen.size() < size, does it matter?
 		while (!toVisit.isEmpty()) {
 			n = toVisit.pop();
+			while (toVisit.remove(n)){};
 			seen.add(n);					
 			loopCount++;
 			
@@ -139,7 +140,7 @@ public class MazeGen {
 			n.removeWall("south");
 			temp.removeWall("north");
 		} else {
-			System.out.println("we have a dx/dy problem");
+			System.out.println("we have a dx/dy problem" +dx +" " +dy);
 		}
 		
 	}
@@ -151,7 +152,7 @@ public class MazeGen {
 	 * @return
 	 */
 	private int getX(ArrayList<ArrayList<Tile>> maze, Tile n) {
-		int x = -1, size = maze.size();
+		int x = 999999, size = maze.size();
 		
 		for (int i = 0; i < size; i++) {
 			if (maze.get(i).contains(n)) {
