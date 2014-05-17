@@ -37,7 +37,7 @@ public class SimpleGraphImp<E> implements SimpleGraph<E> {
 			int min = 0;
 			int max = nodes.size();
 			
-			ret = nodes.get(min + (int)(Math.random() * ((max - min) + 1)) );
+			ret = nodes.get( (min + (int)(Math.random() * ((max - min) + 1))) % max );
 		}
 		
 		return ret;
