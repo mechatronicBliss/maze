@@ -1,14 +1,16 @@
 package temp;
 
 
-import java.util.Map;
+import java.util.HashMap;
+
 
 public class Tile {
 	
-	private Map<String, Boolean> walls;
+	private HashMap<String, Boolean> walls;
 	
 	
 	public Tile() {
+		walls = new HashMap<String, Boolean>();
 		walls.put("north", true);
 		walls.put("east", true);
 		walls.put("south", true);
