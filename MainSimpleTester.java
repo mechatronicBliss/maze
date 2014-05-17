@@ -14,10 +14,11 @@ public class MainSimpleTester {
 		
 	    @SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
-	    System.out.println("Please enter mazer size");
+	    System.out.println("Please enter maze size");
 	    int size = sc.nextInt();
 		
-		mTestv2(sys.generate(size));
+	    sys.generate(size);
+		//mTestv2(sys.generate(size));
 		
 		//gTest();
 		

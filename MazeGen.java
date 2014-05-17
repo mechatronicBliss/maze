@@ -32,16 +32,24 @@ public class MazeGen {
 				//vertical connections
 				if (j > 0) {
 					//TODO check maze.get(i).get(j) return tmp;
-					g.addLink(maze.get(i).get(j-1), tmp);
+					g.addLink(maze.get(i).get(j-1), maze.get(i).get(j));
 				}
 				//lateral connections
 				if (i > 0) {
-					g.addLink(maze.get(i-1).get(j), tmp);
+					g.addLink(maze.get(i-1).get(j), maze.get(i).get(j));
 				}
+				
 				
 			}	
 			
 		}
+		
+		System.out.println("connections test");
+		ArrayList<Tile> test = g.getConnected(maze.get(7).get(4));
+		for (int i = 0; i < test.size(); i++) {
+			System.out.print(test.get(i).getIndex() +", ");
+		}
+		System.out.println();
 		
 		randomDFS(g, maze, size);
 		
@@ -59,13 +67,11 @@ public class MazeGen {
 		ArrayList<Tile> seen = new ArrayList<Tile>();
 		Stack<Tile> toVisit = new Stack<Tile>();
 		
-		ArrayList<Tile> connected;
-		
 		Tile n = g.getMysteryNode();
-		Tile temp = null;
+
 			int wallDelCounter = 0;
-			int trevCount = 0;
 			int loopCount = 0;
+			
 		//TODO remove sneaky early return
 		if (n == null) {
 			System.out.println("Problem");
@@ -78,30 +84,21 @@ public class MazeGen {
 			n = toVisit.pop();
 			seen.add(n);					
 			loopCount++;
-			connected = g.getConnected(n);
 			
 			//add all the connected nodes
-			int i = 0, s = (connected.size());
-			while (i < s ) {
-				temp = connected.get(i);
-				if (!seen.contains(temp)) {
-					trevCount++;
-					toVisit.push(temp);
+			for (Tile t : g.getConnected(n)) {
+				if (!seen.contains(t)) {
+					toVisit.push(t);
 				}
-				i++;
 			}
 			
-			//remove the all between n and temp because moving from n -> temp (cos stack)
-			//check for null for the end case
-			if (n != null && temp != null) {
 				wallDelCounter++;
-				removeWall(maze, n, temp);
-			}
-			
+				if (!toVisit.empty()) {
+					removeWall(maze, n, toVisit.peek());
+				}
 		}
 		System.out.println("remove wall called " +wallDelCounter +" times");
 		System.out.println("loopCount = " +loopCount);
-		System.out.println(trevCount +" adds");
 		
 	}
 
