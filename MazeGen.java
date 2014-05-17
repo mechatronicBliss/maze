@@ -18,12 +18,15 @@ public class MazeGen {
 	public ArrayList<ArrayList<Tile>> generate(int size) {
 		SimpleGraph<Tile> g = new SimpleGraphImp<Tile>();
 		Tile tmp = null;
-	
+		int z = 0;
+		
 		//create tiles in 2d array and add to graph
 		ArrayList<ArrayList<Tile>> maze = new ArrayList<ArrayList<Tile>>();
 		for (int i = 0; i < size; i++) {
+			maze.add(new ArrayList<Tile>());
 			for (int j = 0; j < size; j++) {
-				tmp = new Tile();
+				tmp = new Tile(z);
+				z++;
 				maze.get(i).add(tmp);
 				g.addNode(tmp);
 				//vertical connections
@@ -37,7 +40,7 @@ public class MazeGen {
 				}
 				
 			}	
-			maze.add(new ArrayList<Tile>());
+			
 		}
 		
 		randomDFS(g, maze, size);
@@ -60,7 +63,9 @@ public class MazeGen {
 		
 		Tile n = g.getMysteryNode();
 		Tile temp = null;
-		
+			int wallDelCounter = 0;
+			int trevCount = 0;
+			int loopCount = 0;
 		//TODO remove sneaky early return
 		if (n == null) {
 			System.out.println("Problem");
@@ -72,7 +77,7 @@ public class MazeGen {
 		while (!toVisit.isEmpty()) {
 			n = toVisit.pop();
 			seen.add(n);					
-			
+			loopCount++;
 			connected = g.getConnected(n);
 			
 			//add all the connected nodes
@@ -80,17 +85,23 @@ public class MazeGen {
 			while (i < s ) {
 				temp = connected.get(i);
 				if (!seen.contains(temp)) {
+					trevCount++;
 					toVisit.push(temp);
 				}
 				i++;
 			}
+			
 			//remove the all between n and temp because moving from n -> temp (cos stack)
 			//check for null for the end case
 			if (n != null && temp != null) {
+				wallDelCounter++;
 				removeWall(maze, n, temp);
 			}
 			
 		}
+		System.out.println("remove wall called " +wallDelCounter +" times");
+		System.out.println("loopCount = " +loopCount);
+		System.out.println(trevCount +" adds");
 		
 	}
 

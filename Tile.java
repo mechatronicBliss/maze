@@ -7,9 +7,11 @@ import java.util.HashMap;
 public class Tile {
 	
 	private HashMap<String, Boolean> walls;
+	private final int index;
 	
 	
-	public Tile() {
+	public Tile(int i) {
+		index = i;
 		walls = new HashMap<String, Boolean>();
 		walls.put("north", true);
 		walls.put("east", true);
@@ -23,10 +25,9 @@ public class Tile {
 	}
 
 	public boolean canMove(String dir) {
-		boolean ret = false;
-		if (walls.get(dir)) {
-			ret = true;
-		}
-		return ret;
+		return (!walls.get(dir));
+	}
+	public int getIndex() {
+		return index;
 	}
 }
