@@ -43,9 +43,10 @@ public class MazeGen {
 			}	
 			
 		}
+		System.out.println(z +" tiles created");
 		
 		System.out.println("connections test");
-		ArrayList<Tile> test = g.getConnected(maze.get(7).get(4));
+		ArrayList<Tile> test = g.getConnected(maze.get(0).get(0));
 		for (int i = 0; i < test.size(); i++) {
 			System.out.print(test.get(i).getIndex() +", ");
 		}
@@ -69,8 +70,9 @@ public class MazeGen {
 		
 		Tile n = g.getMysteryNode();
 
-			int wallDelCounter = 0;
-			int loopCount = 0;
+		int wallDelCounter = 0;
+		int loopCount = 0;
+		int pushCount = 0;
 			
 		//TODO remove sneaky early return
 		if (n == null) {
@@ -87,18 +89,23 @@ public class MazeGen {
 			
 			//add all the connected nodes
 			for (Tile t : g.getConnected(n)) {
+				if (g.getConnected(n).size() > 4) {System.out.println("fucck");}
+				
 				if (!seen.contains(t)) {
+					pushCount++;
 					toVisit.push(t);
 				}
 			}
 			
-				wallDelCounter++;
-				if (!toVisit.empty()) {
-					removeWall(maze, n, toVisit.peek());
-				}
+			wallDelCounter++;
+			if (!toVisit.empty()) {
+				removeWall(maze, n, toVisit.peek());
+			}
 		}
 		System.out.println("remove wall called " +wallDelCounter +" times");
+		System.out.println("pushCount = " +pushCount);
 		System.out.println("loopCount = " +loopCount);
+		System.out.println("seen.size() = " +seen.size());
 		
 	}
 

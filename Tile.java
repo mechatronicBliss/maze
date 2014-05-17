@@ -30,4 +30,10 @@ public class Tile {
 	public int getIndex() {
 		return index;
 	}
+	
+	@Override
+	public boolean equals(Object x) {
+		return (this.index == ((Tile) x).getIndex());
+	}
+	
 }
