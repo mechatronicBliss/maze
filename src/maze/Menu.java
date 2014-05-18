@@ -5,20 +5,33 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class Menu {
+public class Menu implements ActionListener{
+	private int difficulty;
 	public Menu() {
+		difficulty = 0;
 		JFrame menuFrame = new JFrame();
 		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menuFrame.setBounds(100, 100, 600, 200);
 		
 		//make some buttons
 		JButton startButton = new JButton("Start");
+		startButton.setActionCommand("start");
+		startButton.addActionListener(this);
 		JButton instructions = new JButton("Instructions");
-		JButton custom = new JButton("Custom");
+		instructions.setActionCommand("showInstructions");
+		instructions.addActionListener(this);
+		JButton custom = new JButton("custom");
 		
 		JRadioButton easy = new JRadioButton("Easy");
+		easy.setActionCommand("e");
+		easy.setSelected(true);
+		easy.addActionListener(this);
 		JRadioButton medium = new JRadioButton("Medium");
+		medium.setActionCommand("m");
+		medium.addActionListener(this);
 		JRadioButton hard = new JRadioButton("Hard");
+		hard.setActionCommand("h");
+		hard.addActionListener(this);
 		
 		//group the radios
 		ButtonGroup group = new ButtonGroup();
@@ -49,5 +62,28 @@ public class Menu {
 		
 		menuFrame.getContentPane().add(buttonPanel);
 		menuFrame.setVisible(true);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getActionCommand().equals("start")) {
+			System.out.println("Loading Game");
+		}
+		else if(e.getActionCommand().equals("e")) {
+			difficulty = 0;
+		}
+		else if(e.getActionCommand().equals("m")) {
+			difficulty = 1;
+		}
+		else if(e.getActionCommand().equals("h")) {
+			difficulty = 2;
+		}
+		else if(e.getActionCommand().equals("custom")) {
+			difficulty = 3;
+			//open custom screen
+		}
+	}
+	public int getDifficulty() {
+		return difficulty;
 	}
 }
