@@ -1,4 +1,4 @@
-package temp;
+package maze;
 
 public class MainSimpleTester {
 
