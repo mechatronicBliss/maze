@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
-@SuppressWarnings("unused")
 public class MainSimpleTester {
 
 	public static void main (String args[]) {
@@ -19,30 +18,30 @@ public class MainSimpleTester {
 		
 	    ArrayList<ArrayList<Tile>> maze = sys.generate(size);
 	    mTestv3(maze);
-	    helpTest(maze, size);
+	    //helpTest(maze, size);
 	    //indexTest(sys.generate(size));
 		//gTest();
 	}
 	
 	
-	
+	/*
 	private static void helpTest(ArrayList<ArrayList<Tile>> maze, int size) {
 		
 	    Tile start = maze.get(0).get(0);
 	    Tile goal = maze.get(size -1).get(size-1);
 	    Tile temp = null;
 	    
-	    HelpGen halp = new HelpGen();
+	    //HelpGen halp = new HelpGen();
 	    
-	    Stack<Tile> moves = halp.getHelp(maze, start, goal);
-	    
+	    //Stack<Tile> moves = halp.getHelp(maze, start, goal);
+	   / 
 	    while (!moves.isEmpty()) {
 	    	temp = moves.pop();
 	    	System.out.print(temp.getIndex() +", ");
 	    }
 	    System.out.println();
 	}
-
+	*/
 
 
 	
