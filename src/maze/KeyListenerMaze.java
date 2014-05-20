@@ -1,19 +1,18 @@
 package maze;
 
-//import java.awt.event.ActionListener;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 
 public class KeyListenerMaze extends JPanel implements KeyListener{
-	//Timer t;
 	private GameState current; 
-	//ActionListener action;
+	ActionListener action;
 	
-	public KeyListenerMaze(GameState current){
+	public KeyListenerMaze(GameState current, ActionListener action){
 		this.current = current;
-		//this.t = new Timer(3, action);
+		this.action = action;
 		addKeyListener(this);
 		setFocusable(true);
 		//SET TO TRUE IF WE WANT TO USE SHIFT AND TAB	
@@ -26,9 +25,7 @@ public class KeyListenerMaze extends JPanel implements KeyListener{
 		// for left, up, right, down 
 		//e.g. gamestate is valid move ( tile.NORTH) 
 		if (action == KeyEvent.VK_DOWN){
-		current.processMoveRequest(Tile.SOUTH);
-
-			
+		current.processMoveRequest(Tile.SOUTH);	
 		} if(action == KeyEvent.VK_UP){
 			current.processMoveRequest(Tile.NORTH);
 		} if(action == KeyEvent.VK_LEFT){
@@ -50,24 +47,12 @@ public class KeyListenerMaze extends JPanel implements KeyListener{
 		
 	}
 
+	//does not need to do anything
 	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void keyReleased(KeyEvent arg0) {}
 
+	//does not type anything
 	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/*
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	*/
+	public void keyTyped(KeyEvent arg0) {}
 
 }
