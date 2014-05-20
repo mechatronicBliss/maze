@@ -17,7 +17,11 @@ public class RectangularGrid implements Grid {
 		return size;
 	}
 	
-	public boolean isValidMove(Tile tile, String direction) {
+	public boolean isValidMove(Tile tile, Integer direction) {
 		return tile.canMove(direction);
+	}
+	
+	public Tile getNeighbour(Tile tile, Integer direction) {
+		
 	}
 }

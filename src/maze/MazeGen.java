@@ -109,20 +109,20 @@ public class MazeGen {
 		
 		//n is to the left of temp
 		if (dx == -1) {
-			n.removeWall("east");
-			temp.removeWall("west");
+			n.removeWall(Tile.EAST);
+			temp.removeWall(Tile.WEST);
 		//n to the right
 		} else if (dx == 1) {
-			n.removeWall("west");
-			temp.removeWall("east");
+			n.removeWall(Tile.WEST);
+			temp.removeWall(Tile.EAST);
 		//n is below
 		} else if (dy == -1) {
-			n.removeWall("north");
-			temp.removeWall("south");
+			n.removeWall(Tile.NORTH);
+			temp.removeWall(Tile.SOUTH);
 		//n is above
 		} else if (dy == 1) {
-			n.removeWall("south");
-			temp.removeWall("north");
+			n.removeWall(Tile.SOUTH);
+			temp.removeWall(Tile.NORTH);
 		} else {
 			System.out.println("we have a dx/dy problem");
 		}

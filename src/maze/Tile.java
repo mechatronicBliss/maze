@@ -1,29 +1,30 @@
 package maze;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Tile {
+	public static final Integer NORTH = 0;
+	public static final Integer EAST = 1;
+	public static final Integer SOUTH = 2;
+	public static final Integer WEST = 3;
 	
-	private Map<String, Boolean> walls;
-	
+	private Map<Integer, Boolean> walls;	
 	
 	public Tile() {
-		walls.put("north", true);
-		walls.put("east", true);
-		walls.put("south", true);
-		walls.put("west", true);
+		walls = new HashMap<Integer, Boolean>();
+		walls.put(NORTH, true);
+		walls.put(EAST, true);
+		walls.put(SOUTH, true);
+		walls.put(WEST, true);
 	}
 	
-	public void removeWall(String s) {
-		walls.remove(s);
-		walls.put(s, false);
+	public void removeWall(Integer dir) {
+		walls.remove(dir); // unnecessary, put overwrites existing value
+		walls.put(dir, false);
 	}
 
-	public boolean canMove(String dir) {
-		boolean ret = false;
-		if (walls.get(dir)) {
-			ret = true;
-		}
-		return ret;
+	public boolean canMove(Integer dir) {
+		return walls.containsKey(dir) && !walls.get(dir);
 	}
 }
