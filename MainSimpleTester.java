@@ -1,96 +1,91 @@
 package temp;
 
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
 
+@SuppressWarnings("unused")
 public class MainSimpleTester {
 
 	public static void main (String args[]) {
 		
 		MazeGen sys = new MazeGen();
 		
-		
 	    @SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
-	    System.out.println("Please enter maze size");
+	    System.out.println("Please enter maze size;");
 	    int size = sc.nextInt();
 		
-	    sys.generate(size);
-		//mTestv2(sys.generate(size));
-		
+	    ArrayList<ArrayList<Tile>> maze = sys.generate(size);
+	    mTestv3(maze);
+	    helpTest(maze, size);
+	    //indexTest(sys.generate(size));
 		//gTest();
-		
-		
-
 	}
 	
 	
-	private static void mTestv2(ArrayList<ArrayList<Tile>> maze) {
-		int size = maze.size();
-		Tile tmp = null;
+	
+	private static void helpTest(ArrayList<ArrayList<Tile>> maze, int size) {
 		
+	    Tile start = maze.get(0).get(0);
+	    Tile goal = maze.get(size -1).get(size-1);
+	    Tile temp = null;
+	    
+	    HelpGen halp = new HelpGen();
+	    
+	    Stack<Tile> moves = halp.getHelp(maze, start, goal);
+	    
+	    while (!moves.isEmpty()) {
+	    	temp = moves.pop();
+	    	System.out.print(temp.getIndex() +", ");
+	    }
+	    System.out.println();
+	}
+
+
+
+	
+	private static void indexTest(ArrayList<ArrayList<Tile>> maze) {
+		int size = maze.size();
 		for (int i = size -1; i > -1; i--) {
 			for (int j = 0; j < size; j++) {
-				tmp = maze.get(i).get(j);
-				System.out.println("cell " +tmp.getIndex());
-				System.out.println("northWall = " +tmp.canMove("north"));
-				System.out.println("eastWall = " +tmp.canMove("east"));
-				System.out.println("southWall = " +tmp.canMove("south"));
-				System.out.println("westWall = " +tmp.canMove("west") +'\n');
-				
-			}			
-		}		
-	}
-	
-	
-	
-	
-	
-	
-	@SuppressWarnings("unused")
-	private static void mTest(ArrayList<ArrayList<Tile>> maze) {
-		
-		int foo = 3, bar = 4;
-		System.out.println(foo +", " +bar +" can move north = " +maze.get(foo).get(bar).canMove("north"));
-		System.out.println(foo +", " +bar +" can move east = " +maze.get(foo).get(bar).canMove("east"));
-		System.out.println(foo +", " +bar +" can move south = " +maze.get(foo).get(bar).canMove("south"));
-		System.out.println(foo +", " +bar +" can move west = " +maze.get(foo).get(bar).canMove("west"));
-		
-		
-		//for each row, starting top to bottom
-		int size = maze.size();
-		
-		for (int i = size -1; i > -1; i--) {
-			//System.out.print('|');
-			for (int j = 0; j < size -1; j++) {
-				//System.out.println("i = " +i +" j = " +j);
-				if (!maze.get(j).get(i).canMove("north")) {
-					System.out.print("*----");
-				} else {
-					System.out.print("     ");
-				}
+				System.out.print(maze.get(j).get(i).getIndex() +"  ");
 			}
-			System.out.print('\n');
+			System.out.println();
+		}
+	}
+
+	private static void mTestv3(ArrayList<ArrayList<Tile>> maze) {
+		
+		int size = maze.size();
+		for (int i = size -1; i > -1; i--) {
 			
-			System.out.print('|');
 			for (int j = 0; j < size; j++) {
-				if (!maze.get(j).get(i).canMove("east")) {
-					System.out.print("&   ");
+				if (maze.get(j).get(i).hasWall("north")) {
+					System.out.print("----");
 				} else {
-					System.out.print("|  ");
+					System.out.print("    ");
 				}
 			}
-			System.out.print('\n');
+			System.out.println();
+			for (int j = 0; j < size; j++) {
+				if (maze.get(j).get(i).hasWall("west")) {
+					System.out.print("|   ");
+				} else {
+					System.out.print("    ");
+				}
+			}
+			System.out.println("|");
 		}
-		for (int j = 0; j < (size -1); j++) {
-			System.out.print("------");
+		
+		//bottom row
+		for (int j = 0; j < size; j++) {
+			System.out.print("----");
 		}
+		System.out.println();		
 	}
 
-
-	@SuppressWarnings("unused")
 	private static void gTest() {
 		//setup
 		SimpleGraph<String> g = new SimpleGraphImp<String>();

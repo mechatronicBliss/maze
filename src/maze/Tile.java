@@ -20,7 +20,6 @@ public class Tile {
 	}
 	
 	public void removeWall(Integer dir) {
-		walls.remove(dir); // unnecessary, put overwrites existing value
 		walls.put(dir, false);
 	}
 
