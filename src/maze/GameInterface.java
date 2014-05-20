@@ -5,10 +5,11 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class Menu implements ActionListener{
+public class GameInterface implements ActionListener{
 	private int difficulty;
-	public Menu() {
-		difficulty = 0;
+	private GameState gameState;
+	public GameInterface() {
+		difficulty = 10;
 		JFrame menuFrame = new JFrame();
 		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menuFrame.setBounds(100, 100, 600, 200);
@@ -70,20 +71,23 @@ public class Menu implements ActionListener{
 			System.out.println("Loading Game");
 		}
 		else if(e.getActionCommand().equals("e")) {
-			difficulty = 0;
+			difficulty = 10;
 		}
 		else if(e.getActionCommand().equals("m")) {
-			difficulty = 1;
+			difficulty = 20;
 		}
 		else if(e.getActionCommand().equals("h")) {
-			difficulty = 2;
+			difficulty = 30;
 		}
 		else if(e.getActionCommand().equals("custom")) {
-			difficulty = 3;
+			difficulty = 40;
 			//open custom screen
 		}
 	}
 	public int getDifficulty() {
 		return difficulty;
+	}
+	private void startGame() {
+		gameState = new GameState(difficulty);
 	}
 }
