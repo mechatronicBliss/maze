@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 public interface RectangularGridGenerator {
 
-	ArrayList<ArrayList<Tile>> generate();
+	ArrayList<ArrayList<Tile>> generate(int size);
 
 }

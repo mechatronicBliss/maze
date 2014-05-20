@@ -1,5 +1,7 @@
 package maze;
 
+import java.util.Stack;
+
 public class GameState {
 	private Maze maze;
 	private KeyListenerMaze k; 
@@ -7,6 +9,10 @@ public class GameState {
 	public GameState(int size) {
 		this.maze = new Maze(size);
 		this.k = new KeyListenerMaze(this);
+	}
+	
+	public Maze getMaze() {
+		return maze;
 	}
 	
 	public void processMoveRequest(Integer dir) {
@@ -22,10 +28,12 @@ public class GameState {
 	}
 	
 	public void getHelp() {
-		// TODO retrieve top move from stack
+		Tile nextTile = maze.getHelp().firstElement();
+		// TODO display, e.g. pulse this tile
 	}
 	
 	public void getSolution() {
-		// TODO use entire stack
+		Stack<Tile> solution = maze.getHelp();
+		// TODO display
 	}
 }

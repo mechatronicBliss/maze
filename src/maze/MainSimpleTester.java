@@ -32,9 +32,7 @@ public class MainSimpleTester {
 	    Tile goal = maze.get(size -1).get(size-1);
 	    Tile temp = null;
 	    
-	    HelpGen halp = new HelpGen();
-	    
-	    Stack<Tile> moves = halp.getHelp(maze, start, goal);
+	    Stack<Tile> moves = maze.getHelp(maze, start, goal);
 	    
 	    while (!moves.isEmpty()) {
 	    	temp = moves.pop();
