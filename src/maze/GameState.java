@@ -2,9 +2,11 @@ package maze;
 
 public class GameState {
 	private Maze maze;
+	private KeyListenerMaze k; 
 	
 	public GameState(int size) {
 		this.maze = new Maze(size);
+		this.k = new KeyListenerMaze(this);
 	}
 	
 	public void processMoveRequest(Integer dir) {

@@ -1,6 +1,5 @@
 package maze;
 
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
