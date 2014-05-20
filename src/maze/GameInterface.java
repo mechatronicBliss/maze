@@ -8,9 +8,14 @@ import javax.swing.*;
 public class GameInterface implements ActionListener{
 	private int difficulty;
 	private GameState gameState;
+	private JFrame menuFrame;
+	private JFrame gameFrame;
 	public GameInterface() {
 		difficulty = 10;
-		JFrame menuFrame = new JFrame();
+		displayMenu();
+	}
+	private void displayMenu() {
+		menuFrame = new JFrame();
 		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menuFrame.setBounds(100, 100, 600, 200);
 		
@@ -63,12 +68,14 @@ public class GameInterface implements ActionListener{
 		
 		menuFrame.getContentPane().add(buttonPanel);
 		menuFrame.setVisible(true);
+		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("start")) {
 			System.out.println("Loading Game");
+			startGame();
 		}
 		else if(e.getActionCommand().equals("e")) {
 			difficulty = 10;
@@ -83,14 +90,17 @@ public class GameInterface implements ActionListener{
 			difficulty = 40;
 			//open custom screen
 		}
-		else if(e.getActionCommand().equals("start")) {
-			startGame();
-		}
 	}
 	public int getDifficulty() {
 		return difficulty;
 	}
 	private void startGame() {
-		gameState = new GameState(difficulty);
+		//gameState = new GameState(difficulty);
+		menuFrame.setVisible(false);
+		
+		gameFrame = new JFrame();
+		gameFrame.setBounds(100, 100, 600, 600);
+		gameFrame.add(new MazeUi(5));
+		gameFrame.setVisible(true);
 	}
 }
