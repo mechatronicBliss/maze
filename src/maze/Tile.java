@@ -21,15 +21,24 @@ public class Tile {
 		this.index = index;
 	}
 	
-	public void removeWall(Integer dir) {
+    public void addWall(Integer dir) { 
+        walls.put(dir, true); 
+    }
+
+    public void removeWall(Integer dir) {
 		walls.put(dir, false);
 	}
 
-	public boolean canMove(Integer dir) {
-		return walls.containsKey(dir) && !walls.get(dir);
-	}
-	
-	public int getIndex() {
-		return index;
-	}
+    public boolean canMove(String dir) { 
+        return !walls.get(dir); 
+    } 
+      
+    public boolean hasWall(String dir) { 
+        return walls.get(dir); 
+    } 
+      
+          
+    public int getIndex() { 
+        return index; 
+    } 
 }

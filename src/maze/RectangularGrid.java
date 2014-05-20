@@ -21,6 +21,12 @@ public class RectangularGrid implements Grid {
 		return tile.canMove(direction);
 	}
 	
+	/**
+	 * Assumes 
+	 * @param tile
+	 * @param direction
+	 * @return
+	 */
 	public Tile getNeighbour(Tile tile, Integer direction) {
 		Tile ret = null;
 		if (direction.equals(Tile.NORTH)) {

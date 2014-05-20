@@ -24,13 +24,6 @@ public class SimpleGraphImp<E> implements SimpleGraph<E> {
 		connections.get(i).add(e1);
 	}
 
-	public ArrayList<E> getConnected(E e) {
-		ArrayList<E> result = new ArrayList<E>();
-		result.addAll(connections.get(nodes.indexOf(e)));
-		
-		return result;
-	}
-
 	public E getMysteryNode() {
 		E ret = null;
 		if (!nodes.isEmpty()) {
@@ -43,4 +36,15 @@ public class SimpleGraphImp<E> implements SimpleGraph<E> {
 		return ret;
 		
 	}
+	
+	public ArrayList<E> getConnected(E e) {
+		ArrayList<E> result = new ArrayList<E>();
+		result.addAll(connections.get(nodes.indexOf(e)));
+		
+		return result;
+	}
+
+	public boolean isConnected(E e1, E e2) { 
+        return connections.get(nodes.indexOf(e1)).contains(e2); 
+    } 
 }

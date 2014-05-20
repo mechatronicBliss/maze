@@ -1,4 +1,4 @@
-package temp;
+package maze;
 
 
 import java.util.ArrayList;
@@ -62,7 +62,7 @@ public class MainSimpleTester {
 		for (int i = size -1; i > -1; i--) {
 			
 			for (int j = 0; j < size; j++) {
-				if (maze.get(j).get(i).hasWall("north")) {
+				if (maze.get(j).get(i).hasWall(Tile.NORTH)) {
 					System.out.print("----");
 				} else {
 					System.out.print("    ");
@@ -70,7 +70,7 @@ public class MainSimpleTester {
 			}
 			System.out.println();
 			for (int j = 0; j < size; j++) {
-				if (maze.get(j).get(i).hasWall("west")) {
+				if (maze.get(j).get(i).hasWall(Tile.WEST)) {
 					System.out.print("|   ");
 				} else {
 					System.out.print("    ");
