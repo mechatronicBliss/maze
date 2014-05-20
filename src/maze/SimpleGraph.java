@@ -12,4 +12,5 @@ public interface SimpleGraph<E> {
 	
 	public ArrayList<E> getConnected(E e);
 	
+	public boolean isConnected(E e1, E e2);
 }

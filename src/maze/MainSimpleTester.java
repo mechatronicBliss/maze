@@ -1,9 +1,92 @@
 package maze;
 
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Stack;
+
+@SuppressWarnings("unused")
 public class MainSimpleTester {
 
 	public static void main (String args[]) {
 		
+		MazeGen sys = new MazeGen();
+		
+	    @SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
+	    System.out.println("Please enter maze size;");
+	    int size = sc.nextInt();
+		
+	    ArrayList<ArrayList<Tile>> maze = sys.generate(size);
+	    mTestv3(maze);
+	    helpTest(maze, size);
+	    //indexTest(sys.generate(size));
+		//gTest();
+	}
+	
+	
+	
+	private static void helpTest(ArrayList<ArrayList<Tile>> maze, int size) {
+		
+	    Tile start = maze.get(0).get(0);
+	    Tile goal = maze.get(size -1).get(size-1);
+	    Tile temp = null;
+	    
+	    HelpGen halp = new HelpGen();
+	    
+	    Stack<Tile> moves = halp.getHelp(maze, start, goal);
+	    
+	    while (!moves.isEmpty()) {
+	    	temp = moves.pop();
+	    	System.out.print(temp.getIndex() +", ");
+	    }
+	    System.out.println();
+	}
+
+
+
+	
+	private static void indexTest(ArrayList<ArrayList<Tile>> maze) {
+		int size = maze.size();
+		for (int i = size -1; i > -1; i--) {
+			for (int j = 0; j < size; j++) {
+				System.out.print(maze.get(j).get(i).getIndex() +"  ");
+			}
+			System.out.println();
+		}
+	}
+
+	private static void mTestv3(ArrayList<ArrayList<Tile>> maze) {
+		
+		int size = maze.size();
+		for (int i = size -1; i > -1; i--) {
+			
+			for (int j = 0; j < size; j++) {
+				if (maze.get(j).get(i).hasWall(Tile.NORTH)) {
+					System.out.print("----");
+				} else {
+					System.out.print("    ");
+				}
+			}
+			System.out.println();
+			for (int j = 0; j < size; j++) {
+				if (maze.get(j).get(i).hasWall(Tile.WEST)) {
+					System.out.print("|   ");
+				} else {
+					System.out.print("    ");
+				}
+			}
+			System.out.println("|");
+		}
+		
+		//bottom row
+		for (int j = 0; j < size; j++) {
+			System.out.print("----");
+		}
+		System.out.println();		
+	}
+
+	private static void gTest() {
 		//setup
 		SimpleGraph<String> g = new SimpleGraphImp<String>();
 		g.addNode("A");
