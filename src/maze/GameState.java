@@ -2,9 +2,11 @@ package maze;
 
 public class GameState {
 	private Maze maze;
+	private HelpGen helper;
 	
 	public GameState(int size) {
 		this.maze = new Maze(size);
+		this.helper = new HelpGen();
 	}
 	
 	public void processMoveRequest(Integer dir) {

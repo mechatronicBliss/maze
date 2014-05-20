@@ -18,6 +18,6 @@ public class Maze {
 	}
 
 	public boolean isSolved() {
-		return characterLocation.equals(grid.getDestination);
+		return characterLocation.equals(grid.getDestination());
 	}
 }

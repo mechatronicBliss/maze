@@ -29,11 +29,11 @@ public class Tile {
 		walls.put(dir, false);
 	}
 
-    public boolean canMove(String dir) { 
+    public boolean canMove(Integer dir) { 
         return !walls.get(dir); 
     } 
       
-    public boolean hasWall(String dir) { 
+    public boolean hasWall(Integer dir) { 
         return walls.get(dir); 
     } 
       

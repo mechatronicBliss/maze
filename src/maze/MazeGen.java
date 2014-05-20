@@ -1,4 +1,4 @@
-package temp;
+package maze;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -117,56 +117,22 @@ public class MazeGen {
 		//System.out.println("remove wall between " +a.getIndex() +" and " +b.getIndex());
 		if (ai - bi == size) {
 			//n is above temp
-			a.removeWall("west");
-			b.removeWall("east");
+			a.removeWall(Tile.WEST);
+			b.removeWall(Tile.EAST);
 		} else if (ai - bi == -size) {
 			//n is below temp
-			a.removeWall("east");
-			b.removeWall("west");
+			a.removeWall(Tile.EAST);
+			b.removeWall(Tile.WEST);
 		} else if (ai - bi == 1) {
 			//n is to the right
-			a.removeWall("south");
-			b.removeWall("north");
+			a.removeWall(Tile.SOUTH);
+			b.removeWall(Tile.NORTH);
 		} else if (ai - bi == -1) {
 			//n is to the left
-			a.removeWall("north");
-			b.removeWall("south");
+			a.removeWall(Tile.NORTH);
+			b.removeWall(Tile.SOUTH);
 		} else {
 			System.out.println("di problem");
 		}
-	}
-
-	
-
-	public void testRemoveWall() {
-		Tile x = new Tile(14), y = new Tile (19);
-		removeWall(5, x, y);
-		System.out.println(x.getIndex() +"'s walls");
-		System.out.println("northWall = " +x.hasWall("north"));
-		System.out.println("eastWall = " +x.hasWall("east"));
-		System.out.println("southWall = " +x.hasWall("south"));
-		System.out.println("westWall = " +x.hasWall("west") +'\n');
-		
-		System.out.println(y.getIndex() +"'s walls");
-		System.out.println("northWall = " +y.hasWall("north"));
-		System.out.println("eastWall = " +y.hasWall("east"));
-		System.out.println("southWall = " +y.hasWall("south"));
-		System.out.println("westWall = " +y.hasWall("west") +'\n');
-
-		Tile z = new Tile(11), q = new Tile(12);
-		removeWall(5, z, q);
-		System.out.println(z.getIndex() +"'s walls");
-		System.out.println("northWall = " +z.hasWall("north"));
-		System.out.println("eastWall = " +z.hasWall("east"));
-		System.out.println("southWall = " +z.hasWall("south"));
-		System.out.println("westWall = " +z.hasWall("west") +'\n');
-		
-		System.out.println(q.getIndex() +"'s walls");
-		System.out.println("northWall = " +q.hasWall("north"));
-		System.out.println("eastWall = " +q.hasWall("east"));
-		System.out.println("southWall = " +q.hasWall("south"));
-		System.out.println("westWall = " +q.hasWall("west") +'\n');
-		
-	}
-	
+	}	
 }
