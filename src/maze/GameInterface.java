@@ -5,10 +5,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class Menu implements ActionListener{
+public class GameInterface implements ActionListener{
 	private int difficulty;
 	private GameState gameState;
-	public Menu() {
+	public GameInterface() {
 		difficulty = 10;
 		JFrame menuFrame = new JFrame();
 		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,6 +89,5 @@ public class Menu implements ActionListener{
 	}
 	private void startGame() {
 		gameState = new GameState(difficulty);
-		
 	}
 }
