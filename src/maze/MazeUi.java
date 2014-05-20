@@ -18,7 +18,7 @@ public class MazeUi extends JPanel {
         for(int i = 0; i < size; i++) {
         	c.gridy = i;
         	for(int j = 0; j < size; j++) {
-        		JComponent b = new Box(true, true, true, true);
+        		JComponent b = new Box(true, false, true, true);
         		this.add(b,c);
         	}
         }

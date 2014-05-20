@@ -21,16 +21,16 @@ public class Box extends JComponent {
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		if(left) {
-			g2d.drawLine(0, 0, 0, 50);
+			g2d.drawLine(0, 0, 0, 49);
 		}
 		if(top) {
-			g2d.drawLine(0, 0, 50, 0);
-		}
-		if(right) {
-			g2d.drawLine(0, 50, 0, 0);
+			g2d.drawLine(0, 0, 49, 0);
 		}
 		if(bottom) {
-			g2d.drawLine(50, 0, 0, 0);
+			g2d.drawLine(0, 49, 49, 49);
+		}
+		if(right) {
+			g2d.drawLine(49, 0, 49, 49);
 		}
 	}
 }
