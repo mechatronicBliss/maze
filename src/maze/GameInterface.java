@@ -83,6 +83,9 @@ public class GameInterface implements ActionListener{
 			difficulty = 40;
 			//open custom screen
 		}
+		else if(e.getActionCommand().equals("start")) {
+			startGame();
+		}
 	}
 	public int getDifficulty() {
 		return difficulty;
