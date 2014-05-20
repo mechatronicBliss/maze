@@ -8,9 +8,10 @@ import javax.swing.*;
 public class GameInterface implements ActionListener{
 	private int difficulty;
 	private GameState gameState;
+	private JFrame menuFrame;
 	public GameInterface() {
 		difficulty = 10;
-		JFrame menuFrame = new JFrame();
+		menuFrame = new JFrame();
 		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menuFrame.setBounds(100, 100, 600, 200);
 		
