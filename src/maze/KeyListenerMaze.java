@@ -7,12 +7,11 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 public class KeyListenerMaze extends JPanel implements KeyListener{
-	private GameState current; 
-	ActionListener action;
 	
-	public KeyListenerMaze(GameState current, ActionListener action){
+	private GameState current; 
+	
+	public KeyListenerMaze(GameState current){
 		this.current = current;
-		this.action = action;
 		addKeyListener(this);
 		setFocusable(true);
 		//SET TO TRUE IF WE WANT TO USE SHIFT AND TAB	
@@ -25,7 +24,7 @@ public class KeyListenerMaze extends JPanel implements KeyListener{
 		// for left, up, right, down 
 		//e.g. gamestate is valid move ( tile.NORTH) 
 		if (action == KeyEvent.VK_DOWN){
-		current.processMoveRequest(Tile.SOUTH);	
+			current.processMoveRequest(Tile.SOUTH);	
 		} if(action == KeyEvent.VK_UP){
 			current.processMoveRequest(Tile.NORTH);
 		} if(action == KeyEvent.VK_LEFT){
