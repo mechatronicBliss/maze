@@ -81,7 +81,7 @@ public class GameInterface implements ActionListener{
 			difficulty = 10;
 		}
 		else if(e.getActionCommand().equals("m")) {
-			difficulty = 20;
+			difficulty = 15;
 		}
 		else if(e.getActionCommand().equals("h")) {
 			difficulty = 30;
@@ -95,12 +95,11 @@ public class GameInterface implements ActionListener{
 		return difficulty;
 	}
 	private void startGame() {
-		//gameState = new GameState(difficulty);
 		menuFrame.setVisible(false);
-		
+        gameState = new GameState(difficulty);
 		gameFrame = new JFrame();
-		gameFrame.setBounds(100, 100, 600, 600);
-		gameFrame.add(new MazeUi(5));
+		gameFrame.setBounds(100, 100, 1000, 1000);
+		gameFrame.add(new MazeUi(difficulty, gameState.getMaze()));
 		gameFrame.setVisible(true);
 	}
 }
