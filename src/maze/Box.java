@@ -14,7 +14,7 @@ public class Box extends JComponent {
 		this.left = left;
 		this.right = right;
 		setVisible(true);
-        setPreferredSize(new Dimension(50,50) );
+        setPreferredSize(new Dimension(50,50));
 	}
 	
 	@Override
@@ -26,11 +26,13 @@ public class Box extends JComponent {
 		if(top) {
 			g2d.drawLine(0, 0, 49, 0);
 		}
+		/*
 		if(bottom) {
 			g2d.drawLine(0, 49, 49, 49);
 		}
 		if(right) {
 			g2d.drawLine(49, 0, 49, 49);
 		}
+		*/
 	}
 }

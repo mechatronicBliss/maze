@@ -17,8 +17,8 @@ public class MainSimpleTester {
 	    int size = sc.nextInt();
 		
 	    ArrayList<ArrayList<Tile>> maze = sys.generate(size);
-	    mTestv3(maze);
-	    //helpTest(maze, size);
+	   mTestv3(maze);
+	   // helpTest(maze, size);
 	    //indexTest(sys.generate(size));
 		//gTest();
 	}
@@ -59,6 +59,7 @@ public class MainSimpleTester {
 	private static void mTestv3(ArrayList<ArrayList<Tile>> maze) {
 		
 		int size = maze.size();
+		System.out.println("size of maze is " + size);
 		for (int i = size -1; i > -1; i--) {
 			
 			for (int j = 0; j < size; j++) {
@@ -83,7 +84,14 @@ public class MainSimpleTester {
 		for (int j = 0; j < size; j++) {
 			System.out.print("----");
 		}
-		System.out.println();		
+		System.out.println();	
+		
+		for(int x = 0; x< size; x++){
+			for(int y = 0; y< size; y++){
+				Tile t = maze.get(x).get(y);
+				System.out.println(y + " tile " + t.hasWall(t.NORTH) + t.hasWall(t.EAST)+ t.hasWall(t.SOUTH) + t.hasWall(t.WEST));
+			}
+		}
 	}
 
 	private static void gTest() {
@@ -114,12 +122,15 @@ public class MainSimpleTester {
 		g.addLink("C", "G");
 		
 		g.addLink("E", "G");
-
 		//tests
+		/*
 		for (int i = 0; i < 15; i++) {
 			System.out.println("Mystery node " +g.getMysteryNode());
+		
 		}
-
+		*/
+		
+		/*
 		System.out.println("A connected" +g.getConnected("A"));
 		System.out.println("  Should be B, C, D, E, F, G\n");
 		System.out.println("B connected" +g.getConnected("B"));
@@ -136,6 +147,7 @@ public class MainSimpleTester {
 		System.out.println("  Should be A, B, C, E\n");
 		System.out.println("H connected" +g.getConnected("H"));
 		System.out.println("  Should be empty\n");
+		*/
 		
 	}
 	

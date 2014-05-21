@@ -16,8 +16,7 @@ public class MazeUi extends JPanel {
         c.weighty = 0;
         c.fill = GridBagConstraints.HORIZONTAL;
         
-        
-        for(int i = 0; i < size; i++) {
+        for(int i = size -1; i < -1; i--) {
         	c.gridx = i;
         	for(int j = 0; j < size; j++) {
                 c.gridy = j;
