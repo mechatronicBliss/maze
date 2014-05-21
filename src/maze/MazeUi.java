@@ -15,18 +15,53 @@ public class MazeUi extends JPanel {
         c.weightx = 0;
         c.weighty = 0;
         c.fill = GridBagConstraints.HORIZONTAL;
-        
-        
-        for(int i = 0; i < size; i++) {
-        	c.gridx = i;
+        c.gridy = 0;
+        for(int i = size-1; i > -1; i--) {
+            boolean bottom = false;
+            if(i == 0) {
+                bottom = true;
+            }
         	for(int j = 0; j < size; j++) {
-                c.gridy = j;
-                Tile t = m.getGrid().getTiles().get(i).get(j);
-        		JComponent b = new Box(t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH));
+                c.gridx = j;
+                boolean end = false;
+                if(j == size - 1) {
+                    end = true;
+                }
+                Tile t = m.getGrid().getTiles().get(j).get(i);
+        		JComponent b = new Box(t.hasWall(t.WEST), end, t.hasWall(t.NORTH), bottom);
         		this.add(b,c);
         	}
+            c.gridy++;
         }
-        c.gridy = 0;
+        /*private static void mTestv3(ArrayList<ArrayList<Tile>> maze) {
+
+            int size = maze.size();
+            for (int i = size -1; i > -1; i--) {
+
+                for (int j = 0; j < size; j++) {
+                    if (maze.get(j).get(i).hasWall(Tile.NORTH)) {
+                        System.out.print("----");
+                    } else {
+                        System.out.print("    ");
+                    }
+                }
+                System.out.println();
+                for (int j = 0; j < size; j++) {
+                    if (maze.get(j).get(i).hasWall(Tile.WEST)) {
+                        System.out.print("|   ");
+                    } else {
+                        System.out.print("    ");
+                    }
+                }
+                System.out.println("|");
+            }
+
+            //bottom row
+            for (int j = 0; j < size; j++) {
+                System.out.print("----");
+            }
+            System.out.println();
+        } */
         this.validate();
         this.repaint();
 	}
