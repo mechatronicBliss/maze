@@ -23,22 +23,14 @@ public class MazeUi extends JPanel {
         //creating new player
         m.getGrid().getTiles().get(0).get(0).setPlayer(true);
         
-        
+        boolean start = true;
         for(int i = size-1; i > -1; i--) {
-            boolean bottom = false;
-            if(i == 0) {
-                bottom = true;
-                
-            }
         	for(int j = 0; j < size; j++) {
                 c.gridx = j;
-                boolean end = false;
-                if(j == size - 1) {
-                    end = true;
-                }
                 
                 Tile t = m.getGrid().getTiles().get(j).get(i);
-        		JComponent b = new Box(t.hasWall(t.WEST), end, t.hasWall(t.NORTH), bottom);
+        		Box b = new Box(t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH));
+                b.setPopulation(m.getGrid().getTiles().get(j).get(i).hasPlayer());
         		this.add(b,c);
         	}
             c.gridy++;
