@@ -1,14 +1,33 @@
 package maze;
 
+import java.awt.Image;
 import java.util.Stack;
+
+import javax.swing.ImageIcon;
 
 public class Maze {
 	private Tile characterLocation;
 	private Grid grid;
 	
+	//the image of player 
+	private Image player; 
+	
+	
 	public Maze(int size) {
 		this.grid = new RectangularGrid(size);
 		this.characterLocation = grid.getSource();
+		
+		ImageIcon img = new ImageIcon("/Users/bored_jason/Documents/explosion/maze/Superman.png");
+		player = img.getImage();
+	}
+	
+	public Image getPlayer(){
+		return player;
+	}
+	
+	public Tile StartPos(){
+		Tile t = grid.getTiles().get(0).get(0);
+		return t;
 	}
 	
 	public Grid getGrid() {

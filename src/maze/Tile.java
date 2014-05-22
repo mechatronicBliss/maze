@@ -9,8 +9,9 @@ public class Tile {
 	public static final Integer SOUTH = 2;
 	public static final Integer WEST = 3;
 	
-	private Map<Integer, Boolean> walls;	
+	private Map<Integer, Boolean> walls;
 	private int index;
+	private boolean hasPlayer;
 	
 	public Tile(int index) {
 		walls = new HashMap<Integer, Boolean>();
@@ -19,6 +20,15 @@ public class Tile {
 		walls.put(SOUTH, true);
 		walls.put(WEST, true);
 		this.index = index;
+		this.hasPlayer = false;
+	}
+	
+	public void setPlayer(boolean b){
+		this.hasPlayer = b;
+	}
+	
+	public boolean hasPlayer(){
+		return this.hasPlayer;
 	}
 	
     public void addWall(Integer dir) { 
