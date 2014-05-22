@@ -8,11 +8,13 @@ public class Box extends JComponent {
 	private boolean right;
 	private boolean top;
 	private boolean bottom;
-	public Box(boolean left, boolean right, boolean top, boolean bottom) {
+	private Image player; 
+	public Box(boolean left, boolean right, boolean top, boolean bottom, Image player) {
 		this.top =top;
 		this.bottom = bottom;
 		this.left = left;
 		this.right = right;
+		this.player = player;
 		setVisible(true);
         setPreferredSize(new Dimension(20,20));
 	}
@@ -32,6 +34,10 @@ public class Box extends JComponent {
 		}
 		if(right) {
 			g2d.drawLine(19, 0, 19, 19);
+		}
+		
+		if(player != null){
+			g2d.drawOval(0, 0, 15, 19);
 		}
 		
 	}

@@ -38,7 +38,13 @@ public class MazeUi extends JPanel {
                 }
                 
                 Tile t = m.getGrid().getTiles().get(j).get(i);
-        		JComponent b = new Box(t.hasWall(t.WEST), end, t.hasWall(t.NORTH), bottom);
+                
+                Image player = null;
+                if(t.hasPlayer()){
+                	System.out.println("x coord = " + i + " y coord = " + j);
+                	player = m.getPlayer();
+                }
+        		JComponent b = new Box(t.hasWall(t.WEST), end, t.hasWall(t.NORTH), bottom, player);
         		this.add(b,c);
         	}
             c.gridy++;
