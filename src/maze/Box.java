@@ -37,7 +37,8 @@ public class Box extends JComponent {
 		}
 		
 		if(player != null){
-			g2d.drawOval(0, 0, 15, 19);
+			//g2d.drawOval(0, 0, 15, 19);
+			g2d.fillOval(0, 0, 15, 19);
 		}
 		
 	}

@@ -4,11 +4,11 @@ import java.util.Stack;
 
 public class GameState {
 	private Maze maze;
-	private KeyListenerMaze k; 
+	//private KeyListenerMaze k; 
 	
 	public GameState(int size) {
 		this.maze = new Maze(size);
-		this.k = new KeyListenerMaze(this);
+		//this.k = new KeyListenerMaze(this);
 	}
 	
 	public Maze getMaze() {
