@@ -49,9 +49,9 @@ public class RectangularGrid implements Grid {
 		int x = index/size;
 		int y = index%size;
 		if (direction.equals(Tile.NORTH) && y < size-1) {
-			ret = tiles.get(x).get(y-1);
-		} else if (direction.equals(Tile.SOUTH) && y > 0) {
 			ret = tiles.get(x).get(y+1);
+		} else if (direction.equals(Tile.SOUTH) && y > 0) {
+			ret = tiles.get(x).get(y-1);
 		} else if (direction.equals(Tile.EAST) && x < size-1) {
 			ret = tiles.get(x+1).get(y);
 		} else if (direction.equals(Tile.WEST) && x > 0) {
