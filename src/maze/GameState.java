@@ -18,6 +18,7 @@ public class GameState {
 	public void processMoveRequest(Integer dir) {
 		if (maze.isValidMove(dir)) {
 			maze.makeMove(dir);
+			System.out.println("made move to"+  dir);
 		} else {
 			// TODO flag error, e.g. pulse blocking wall (or fail quietly)
 		}
