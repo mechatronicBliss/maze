@@ -14,24 +14,24 @@ public class Box extends JComponent {
 		this.left = left;
 		this.right = right;
 		setVisible(true);
-        setPreferredSize(new Dimension(50,50));
+        setPreferredSize(new Dimension(20,20));
 	}
 	
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		if(left) {
-			g2d.drawLine(0, 0, 0, 49);
+			g2d.drawLine(0, 0, 0, 19);
 		}
 		if(top) {
-			g2d.drawLine(0, 0, 49, 0);
+			g2d.drawLine(0, 0, 19, 0);
 		}
 		
 		if(bottom) {
-			g2d.drawLine(0, 49, 49, 49);
+			g2d.drawLine(0, 19, 19, 19);
 		}
 		if(right) {
-			g2d.drawLine(49, 0, 49, 49);
+			g2d.drawLine(19, 0, 19, 19);
 		}
 		
 	}
