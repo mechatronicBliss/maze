@@ -15,17 +15,21 @@ public class GameState {
 		return maze;
 	}
 	
-	public void processMoveRequest(Integer dir) {
+	public boolean processMoveRequest(Integer dir) {
+        boolean canMove = false;
 		if (maze.isValidMove(dir)) {
 			maze.makeMove(dir);
 			System.out.println("made move to"+  dir);
+            canMove = true;
 		} else {
 			// TODO flag error, e.g. pulse blocking wall (or fail quietly)
+            canMove = false;
 		}
 		
 		if (maze.isSolved()) {
 			// TODO win screen
 		}
+        return canMove;
 	}
 	
 	public void getHelp() {
