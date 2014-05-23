@@ -8,16 +8,17 @@ import javax.swing.*;
 public class GameInterface implements ActionListener{
 	private int difficulty;
 	private GameState gameState;
-	private JFrame menuFrame;
 	private JFrame gameFrame;
+    private JPanel menuPanel;
+    private MazeUi m;
 	public GameInterface() {
 		difficulty = 10;
+        gameFrame = new JFrame();
 		displayMenu();
 	}
 	private void displayMenu() {
-		menuFrame = new JFrame();
-		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		menuFrame.setBounds(100, 100, 600, 200);
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameFrame.setBounds(100, 100, 600, 600);
 		
 		//make some buttons
 		JButton startButton = new JButton("Start");
@@ -45,29 +46,29 @@ public class GameInterface implements ActionListener{
 		group.add(medium);
 		group.add(hard);
 		
-		JPanel buttonPanel = new JPanel(new GridBagLayout());
+		menuPanel = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 0;
-		buttonPanel.add(instructions, c);
+        menuPanel.add(instructions, c);
 		
 		c.gridx = 1;
-		buttonPanel.add(startButton, c);
+        menuPanel.add(startButton, c);
 		
 		c.gridx = 2;
-		buttonPanel.add(custom, c);
+        menuPanel.add(custom, c);
 		
 		c.gridx = 1;
 		c.gridy = 1;
-		buttonPanel.add(easy, c);
+        menuPanel.add(easy, c);
 		c.gridy = 2;
-		buttonPanel.add(medium, c);
+        menuPanel.add(medium, c);
 		c.gridy = 3;
-		buttonPanel.add(hard, c);
+        menuPanel.add(hard, c);
 		
-		menuFrame.getContentPane().add(buttonPanel);
-		menuFrame.setVisible(true);
+		gameFrame.add(menuPanel);
+		gameFrame.setVisible(true);
 		
 	}
 	
@@ -95,13 +96,14 @@ public class GameInterface implements ActionListener{
 		return difficulty;
 	}
 	private void startGame() {
-		menuFrame.setVisible(false);
+        gameFrame.remove(menuPanel);
         gameState = new GameState(difficulty);
-		gameFrame = new JFrame();
+
 		gameFrame.setBounds(100, 100, 1000, 1000);
-		gameFrame.add(new MazeUi(difficulty, gameState.getMaze()));
-		//added key listener here
-		gameFrame.addKeyListener(new KeyListenerMaze(gameState));
-		gameFrame.setVisible(true);
+        m = new MazeUi(difficulty, gameState.getMaze());
+        KeyListenerMaze k =  new KeyListenerMaze(gameState, m);
+        gameFrame.addKeyListener(k);
+		gameFrame.add(m);
+        gameFrame.requestFocusInWindow();
 	}
 }

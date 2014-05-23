@@ -1,29 +1,35 @@
 package maze;
 import java.awt.*;
 import java.awt.event.*;
-
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class MazeUi extends JPanel {
     private Maze m;
     private Boolean player;
+    private int playerX;
+    private int playerY;
+    private ArrayList<ArrayList<Box>> boxes;
     
 	public MazeUi(int size, Maze m) {
         this.m = m;
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		
+		this.boxes = new ArrayList<ArrayList<Box>>();
         c.ipadx = 0;
         c.ipady = 0;
         c.weightx = 0;
         c.weighty = 0;
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridy = 0;
-        
+        this.playerX = 0;
+        this.playerY = 0;
         //creating new player
         m.getGrid().getTiles().get(0).get(0).setPlayer(true);
         
-        
+        for(int i = 0; i < size; i++) {
+            boxes.add(i, new ArrayList<Box>());
+        }
         for(int i = size-1; i > -1; i--) {
             boolean bottom = false;
             if(i == 0) {
@@ -44,12 +50,30 @@ public class MazeUi extends JPanel {
                 	System.out.println("x coord = " + i + " y coord = " + j);
                 	player = m.getPlayer();
                 }
-        		JComponent b = new Box(t.hasWall(t.WEST), end, t.hasWall(t.NORTH), bottom, player);
+        		Box b = new Box(t.hasWall(t.WEST), end, t.hasWall(t.NORTH), bottom, player);
         		this.add(b,c);
+                boxes.get(i).add(b);
         	}
             c.gridy++;
         }
+        boxes.get(playerY).get(playerX).activate();
         this.validate();
         this.repaint();
 	}
+    public void move(int direction) {
+        boxes.get(playerY).get(playerX).deactivate();
+        if(direction == Tile.NORTH) {
+            playerY++;
+        }
+        else if(direction == Tile.SOUTH) {
+            playerY--;
+        }
+        else if(direction == Tile.EAST) {
+            playerX++;
+        }
+        else if(direction == Tile.WEST) {
+            playerX--;
+        }
+        boxes.get(playerY).get(playerX).activate();
+    }
 }
