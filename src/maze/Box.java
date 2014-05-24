@@ -10,13 +10,16 @@ public class Box extends JComponent {
 	private boolean bottom;
 	private Image player;
     private boolean active;
-	public Box(boolean left, boolean right, boolean top, boolean bottom, Image player) {
+    private boolean isFinal;
+	public Box(boolean left, boolean right, boolean top, boolean bottom, Image player, boolean isFinal) {
 		this.top =top;
 		this.bottom = bottom;
 		this.left = left;
 		this.right = right;
 		this.player = player;
         this.active = false;
+        this.isFinal = isFinal;
+        
 		setVisible(true);
         setPreferredSize(new Dimension(20,20));
 	}
@@ -38,11 +41,15 @@ public class Box extends JComponent {
 			g2d.drawLine(19, 0, 19, 19);
 		}
 		
+		if(isFinal){
+			g2d.setColor(Color.RED);
+			g2d.fillRect(0, 0, 20, 20);
+		}
 		if(active){
 			//g2d.drawOval(0, 0, 15, 19);
+			g2d.setColor(Color.BLUE);
 			g2d.fillOval(0, 0, 15, 19);
 		}
-		
 	}
     public void activate() {
         this.active = true;

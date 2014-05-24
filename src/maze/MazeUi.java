@@ -24,6 +24,7 @@ public class MazeUi extends JPanel {
         c.gridy = 0;
         this.playerX = 0;
         this.playerY = 0;
+        
         //creating new player
         m.getGrid().getTiles().get(0).get(0).setPlayer(true);
         
@@ -31,18 +32,22 @@ public class MazeUi extends JPanel {
             boxes.add(i, new ArrayList<Box>());
         }
         for(int i = size-1; i > -1; i--) {
-
+        	
         	for(int j = 0; j < size; j++) {
                 c.gridx = j;
                 
                 Tile t = m.getGrid().getTiles().get(j).get(i);
-                
+                //adding finish tile 
+                boolean isFinal = false;
+                if((j == size-1) && (i==size-1)){
+                	isFinal = true;
+                }
                 Image player = null;
                 if(t.hasPlayer()){
                 	System.out.println("x coord = " + i + " y coord = " + j);
                 	player = m.getPlayer();
                 }
-        		Box b = new Box(t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), player);
+        		Box b = new Box(t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), player, isFinal);
         		this.add(b,c);
                 boxes.get(i).add(b);
         	}
@@ -52,6 +57,7 @@ public class MazeUi extends JPanel {
         this.validate();
         this.repaint();
 	}
+	
     public void move(int direction) {
         boxes.get(playerY).get(playerX).deactivate();
         if(direction == Tile.NORTH) {
