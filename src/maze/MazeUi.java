@@ -66,7 +66,7 @@ public class MazeUi extends JPanel {
         while(k < size) {
             int x = (int) Math.floor(Math.random()*size);
             int y = (int) Math.floor(Math.random()*size);
-            if(!boxes.get(x).get(y).isCollectable()) {
+            if(!boxes.get(x).get(y).isCollectable() && !(y == size-1 && x == size -1)) {
                 boxes.get(x).get(y).setCollectable(true);
                 k++;
             }
