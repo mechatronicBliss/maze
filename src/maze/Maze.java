@@ -26,12 +26,12 @@ public class Maze {
 		img = new ImageIcon("greengrass.JPG");
 		this.mazeBackground = img.getImage();
 		
-		img = new ImageIcon("BrickWall.jpg");
+		img = new ImageIcon("brickwall.JPG");
 		this.wallImage = img.getImage();
 	}
 	
 	public Image getWallImage(){
-		return player;
+		return wallImage;
 	}
 	
 	public Image getPlayer(){

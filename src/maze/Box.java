@@ -10,6 +10,7 @@ public class Box extends JComponent {
 	private boolean bottom;
 	private Image player;
 	private Image mazeBackground;
+	private Image wallImage;
     private boolean active;
     private boolean isFinal;
     int size;
@@ -19,13 +20,16 @@ public class Box extends JComponent {
     private int pixelSize;
     
 	public Box(int size, boolean left, boolean right, boolean top, boolean bottom, 
-			Image player, Image mazeBackground, boolean isFinal) {
+			Image player, Image mazeBackground, Image wallImage, boolean isFinal) {
 		this.top =top;
 		this.bottom = bottom;
 		this.left = left;
 		this.right = right;
+		
 		this.player = player;
 		this.mazeBackground = mazeBackground;
+		this.wallImage = wallImage;
+		
         this.active = false;
         this.isFinal = isFinal;
         
@@ -41,17 +45,17 @@ public class Box extends JComponent {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(mazeBackground, 0, 0, (pixelSize), (pixelSize), null);
 		if(left) {
-			g2d.drawLine(0, 0, 0, (pixelSize) - 1 );
+			g2d.drawImage(wallImage, 0, 0, (pixelSize)/8,  (pixelSize), null);
 		}
 		if(top) {
-			g2d.drawLine(0, 0, (pixelSize) - 1, 0);
+			g2d.drawImage(wallImage, 0, 0, (pixelSize),  (pixelSize)/8, null);
 		}
 		
 		if(bottom) {
-			g2d.drawLine(0, (pixelSize) - 1, (pixelSize) - 1, (pixelSize) - 1);
+			g2d.drawImage(wallImage, 0, (pixelSize)-2, (pixelSize),  (pixelSize)/3, null);
 		}
 		if(right) {
-			g2d.drawLine((pixelSize) - 1, 0, (pixelSize) - 1, (pixelSize) - 1);
+			g2d.drawImage(wallImage, (pixelSize) - 3 , 0, (pixelSize)/8,  (pixelSize), null);
 	
 		}
 		if(isFinal){
@@ -59,9 +63,6 @@ public class Box extends JComponent {
 			g2d.fillRect(0, 0, (pixelSize) - 1, (pixelSize) - 1);
 		}
 		if(active){
-			//g2d.drawOval(0, 0, 15, 19);
-			//g2d.setColor(Color.BLUE);
-			//g2d.fillOval(0, 0, 15, 19);
 			System.out.println(" enters player loop");
 			boolean character = g2d.drawImage(player, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
 			System.out.println(character);

@@ -54,7 +54,7 @@ public class MazeUi extends JPanel {
                 }
                 */
         		Box b = new Box(size, t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), 
-        				player, m.getBackground(), isFinal);
+        				player, m.getBackground(), m.getWallImage(), isFinal);
         		this.add(b,c);
                 boxes.get(i).add(b);
         	}
