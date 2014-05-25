@@ -15,6 +15,8 @@ public class Maze {
 	private Image mazeBackground;
 	//the image of the walls 
 	private Image wallImage;
+	//the image of the collectables
+	private Image collectables; 
 	
 	public Maze(int size) {
 		this.grid = new RectangularGrid(size);
@@ -28,18 +30,25 @@ public class Maze {
 		
 		img = new ImageIcon("brickwall.JPG");
 		this.wallImage = img.getImage();
+	
+		img = new ImageIcon("moneybags.JPG");
+		this.collectables = img.getImage();
 	}
 	
 	public Image getWallImage(){
-		return wallImage;
+		return this.wallImage;
 	}
 	
 	public Image getPlayer(){
-		return player;
+		return this.player;
 	}
 	
 	public Image getBackground(){
-		return mazeBackground;
+		return this.mazeBackground;
+	}
+	
+	public Image getCollectables(){
+		return this.collectables;
 	}
 	
 	public Tile StartPos(){
