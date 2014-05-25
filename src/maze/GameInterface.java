@@ -100,10 +100,15 @@ public class GameInterface implements ActionListener{
         gameState = new GameState(difficulty);
 
 		gameFrame.setBounds(100, 100, 1000, 1000);
-        m = new MazeUi(difficulty, gameState.getMaze());
+        m = new MazeUi(difficulty, gameState.getMaze(), this);
         KeyListenerMaze k =  new KeyListenerMaze(gameState, m);
         gameFrame.addKeyListener(k);
 		gameFrame.add(m);
         gameFrame.requestFocusInWindow();
 	}
+    public void restart() {
+        gameFrame.setVisible(false);
+        gameFrame = new JFrame();
+        displayMenu();
+    }
 }

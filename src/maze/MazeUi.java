@@ -10,9 +10,10 @@ public class MazeUi extends JPanel {
     private int playerX;
     private int playerY;
     private int size;
+    private GameInterface gameController;
     private ArrayList<ArrayList<Box>> boxes;
     
-	public MazeUi(int size, Maze m) {
+	public MazeUi(int size, Maze m, GameInterface gameController) {
         this.m = m;
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -26,6 +27,7 @@ public class MazeUi extends JPanel {
         c.gridy = 0;
         this.playerX = 0;
         this.playerY = 0;
+        this.gameController = gameController;
         
         //creating new player
         m.getGrid().getTiles().get(0).get(0).setPlayer(true);
@@ -78,7 +80,8 @@ public class MazeUi extends JPanel {
             playerX--;
         }
         if(playerX == size -1 && playerY == size -1) {
-            JOptionPane.showMessageDialog(null, "My Goodness, this is so concise");
+            JOptionPane.showMessageDialog(null, "You Win!");
+            gameController.restart();
         }
         boxes.get(playerY).get(playerX).activate();
     }
