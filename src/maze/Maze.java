@@ -12,18 +12,34 @@ public class Maze {
 	//the image of player 
 	private Image player; 
 	//the image of the grass
-
+	private Image mazeBackground;
+	//the image of the walls 
+	private Image wallImage;
 	
 	public Maze(int size) {
 		this.grid = new RectangularGrid(size);
 		this.characterLocation = grid.getSource();
 		
 		ImageIcon img = new ImageIcon("Superman.png");
-		player = img.getImage();
+		this.player = img.getImage();
+		
+		img = new ImageIcon("greengrass.JPG");
+		this.mazeBackground = img.getImage();
+		
+		img = new ImageIcon("BrickWall.jpg");
+		this.wallImage = img.getImage();
+	}
+	
+	public Image getWallImage(){
+		return player;
 	}
 	
 	public Image getPlayer(){
 		return player;
+	}
+	
+	public Image getBackground(){
+		return mazeBackground;
 	}
 	
 	public Tile StartPos(){
