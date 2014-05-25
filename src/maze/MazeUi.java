@@ -96,9 +96,14 @@ public class MazeUi extends JPanel {
             collectables++;
             b.setCollectable(false);
         }
-        if(playerX == size -1 && playerY == size -1 && collectables == size) {
-            JOptionPane.showMessageDialog(null, "You Win!");
-            gameController.restart();
+        if(playerX == size -1 && playerY == size -1){
+        	
+        	if(collectables == size) {
+        		JOptionPane.showMessageDialog(null, "You Win!");
+        		gameController.restart();
+        	} else {
+        		JOptionPane.showMessageDialog(null, "please collect all the collectables");
+        	}
         }
         boxes.get(playerY).get(playerX).activate();
     }
