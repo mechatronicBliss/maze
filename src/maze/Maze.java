@@ -11,7 +11,8 @@ public class Maze {
 	
 	//the image of player 
 	private Image player; 
-	
+	//the image of the grass
+
 	
 	public Maze(int size) {
 		this.grid = new RectangularGrid(size);
