@@ -11,6 +11,7 @@ public class GameInterface implements ActionListener{
 	private JFrame gameFrame;
     private JPanel menuPanel;
     private MazeUi m;
+    private JPanel sideBar;
 	public GameInterface() {
 		difficulty = 10;
         gameFrame = new JFrame();
@@ -39,6 +40,13 @@ public class GameInterface implements ActionListener{
 		JRadioButton hard = new JRadioButton("Hard");
 		hard.setActionCommand("h");
 		hard.addActionListener(this);
+
+        JButton exit = new JButton("Exit");
+        exit.setActionCommand("exit");
+        exit.addActionListener(this);
+
+        sideBar = new JPanel(new GridBagLayout());
+        sideBar.add(exit);
 		
 		//group the radios
 		ButtonGroup group = new ButtonGroup();
@@ -91,6 +99,9 @@ public class GameInterface implements ActionListener{
 			difficulty = 40;
 			//open custom screen
 		}
+        else if(e.getActionCommand().equals("exit")) {
+            restart();
+        }
 	}
 	public int getDifficulty() {
 		return difficulty;
@@ -99,11 +110,13 @@ public class GameInterface implements ActionListener{
         gameFrame.remove(menuPanel);
         gameState = new GameState(difficulty);
 
-		gameFrame.setBounds(100, 100, 1000, 1000);
+		gameFrame.setBounds(100, 100, 1200, 1000);
         m = new MazeUi(difficulty, gameState.getMaze(), this);
         KeyListenerMaze k =  new KeyListenerMaze(gameState, m);
         gameFrame.addKeyListener(k);
-		gameFrame.add(m);
+		gameFrame.add(m, BorderLayout.WEST);
+        gameFrame.add(sideBar);
+        gameFrame.pack();
         gameFrame.requestFocusInWindow();
 	}
     public void restart() {
