@@ -9,6 +9,7 @@ public class MazeUi extends JPanel {
     private Image player;
     private int playerX;
     private int playerY;
+    private int size;
     private ArrayList<ArrayList<Box>> boxes;
     
 	public MazeUi(int size, Maze m) {
@@ -16,6 +17,7 @@ public class MazeUi extends JPanel {
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		this.boxes = new ArrayList<ArrayList<Box>>();
+        this.size = size;
         c.ipadx = 0;
         c.ipady = 0;
         c.weightx = 0;
@@ -73,6 +75,9 @@ public class MazeUi extends JPanel {
         }
         else if(direction == Tile.WEST) {
             playerX--;
+        }
+        if(playerX == size -1 && playerY == size -1) {
+            JOptionPane.showMessageDialog(null, "My Goodness, this is so concise");
         }
         boxes.get(playerY).get(playerX).activate();
     }
