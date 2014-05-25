@@ -14,6 +14,7 @@ public class Box extends JComponent {
     private boolean active;
     private boolean isFinal;
     private boolean hasCollectable;
+    private Image collectable;
     int size;
     
     //size of the maze 
@@ -21,12 +22,13 @@ public class Box extends JComponent {
     private int pixelSize;
     
 	public Box(int size, boolean left, boolean right, boolean top, boolean bottom,
-			Image player, Image mazeBackground, Image wallImage, boolean isFinal) {
+			Image player, Image mazeBackground, Image wallImage, Image collectable, boolean isFinal) {
 		this.top =top;
 		this.bottom = bottom;
 		this.left = left;
 		this.right = right;
         this.hasCollectable = hasCollectable;
+        this.collectable = collectable;
 		this.player = player;
 		this.mazeBackground = mazeBackground;
 		this.wallImage = wallImage;
@@ -69,7 +71,7 @@ public class Box extends JComponent {
 			System.out.println(character);
 		}
         if(hasCollectable) {
-            boolean character = g2d.drawImage(player, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
+            boolean character = g2d.drawImage(collectable, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
         }
 	}
     public void activate() {
