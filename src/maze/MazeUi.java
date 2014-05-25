@@ -10,10 +10,12 @@ public class MazeUi extends JPanel {
     private int playerX;
     private int playerY;
     private int size;
+    private int collectables;
     private GameInterface gameController;
     private ArrayList<ArrayList<Box>> boxes;
     
 	public MazeUi(int size, Maze m, GameInterface gameController) {
+        collectables = 0;
         this.m = m;
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -60,13 +62,24 @@ public class MazeUi extends JPanel {
         	}
             c.gridy++;
         }
+        int k = 0;
+        while(k < size) {
+            int x = (int) Math.floor(Math.random()*size);
+            int y = (int) Math.floor(Math.random()*size);
+            if(!boxes.get(x).get(y).isCollectable()) {
+                boxes.get(x).get(y).setCollectable(true);
+                k++;
+            }
+
+        }
         boxes.get(playerY).get(playerX).activate();
         this.validate();
         this.repaint();
 	}
 	
     public void move(int direction) {
-        boxes.get(playerY).get(playerX).deactivate();
+        Box b = boxes.get(playerY).get(playerX);
+        b.deactivate();
         if(direction == Tile.NORTH) {
             playerY++;
         }
@@ -79,7 +92,11 @@ public class MazeUi extends JPanel {
         else if(direction == Tile.WEST) {
             playerX--;
         }
-        if(playerX == size -1 && playerY == size -1) {
+        if(b.isCollectable()) {
+            collectables++;
+            b.setCollectable(false);
+        }
+        if(playerX == size -1 && playerY == size -1 && collectables == size) {
             JOptionPane.showMessageDialog(null, "You Win!");
             gameController.restart();
         }

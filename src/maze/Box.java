@@ -13,19 +13,20 @@ public class Box extends JComponent {
 	private Image wallImage;
     private boolean active;
     private boolean isFinal;
+    private boolean hasCollectable;
     int size;
     
     //size of the maze 
-    private final int mazeSize = 600;
+    private final int mazeSize = 800;
     private int pixelSize;
     
-	public Box(int size, boolean left, boolean right, boolean top, boolean bottom, 
+	public Box(int size, boolean left, boolean right, boolean top, boolean bottom,
 			Image player, Image mazeBackground, Image wallImage, boolean isFinal) {
 		this.top =top;
 		this.bottom = bottom;
 		this.left = left;
 		this.right = right;
-		
+        this.hasCollectable = hasCollectable;
 		this.player = player;
 		this.mazeBackground = mazeBackground;
 		this.wallImage = wallImage;
@@ -45,17 +46,17 @@ public class Box extends JComponent {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(mazeBackground, 0, 0, (pixelSize), (pixelSize), null);
 		if(left) {
-			g2d.drawImage(wallImage, 0, 0, (pixelSize)/8,  (pixelSize), null);
+			g2d.drawImage(wallImage, 0, 0, (pixelSize) / 8, (pixelSize), null);
 		}
 		if(top) {
-			g2d.drawImage(wallImage, 0, 0, (pixelSize),  (pixelSize)/8, null);
+			g2d.drawImage(wallImage, 0, 0, (pixelSize), (pixelSize) / 8, null);
 		}
 		
 		if(bottom) {
-			g2d.drawImage(wallImage, 0, (pixelSize)-2, (pixelSize),  (pixelSize)/3, null);
+			g2d.drawImage(wallImage, 0, (pixelSize) - 2, (pixelSize), (pixelSize) / 3, null);
 		}
 		if(right) {
-			g2d.drawImage(wallImage, (pixelSize) - 3 , 0, (pixelSize)/8,  (pixelSize), null);
+			g2d.drawImage(wallImage, (pixelSize) - 3, 0, (pixelSize) / 8, (pixelSize), null);
 	
 		}
 		if(isFinal){
@@ -67,6 +68,9 @@ public class Box extends JComponent {
 			boolean character = g2d.drawImage(player, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
 			System.out.println(character);
 		}
+        if(hasCollectable) {
+            boolean character = g2d.drawImage(player, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
+        }
 	}
     public void activate() {
         this.active = true;
@@ -74,6 +78,13 @@ public class Box extends JComponent {
     }
     public void deactivate() {
         this.active = false;
+        repaint();
+    }
+    public boolean isCollectable() {
+        return this.hasCollectable;
+    }
+    public void setCollectable(boolean hasCollectable) {
+        this.hasCollectable = hasCollectable;
         repaint();
     }
 }
