@@ -11,6 +11,7 @@ public class Box extends JComponent {
 	private Image player;
     private boolean active;
     private boolean isFinal;
+    
 	public Box(boolean left, boolean right, boolean top, boolean bottom, Image player, boolean isFinal) {
 		this.top =top;
 		this.bottom = bottom;
@@ -47,8 +48,11 @@ public class Box extends JComponent {
 		}
 		if(active){
 			//g2d.drawOval(0, 0, 15, 19);
-			g2d.setColor(Color.BLUE);
-			g2d.fillOval(0, 0, 15, 19);
+			//g2d.setColor(Color.BLUE);
+			//g2d.fillOval(0, 0, 15, 19);
+			System.out.println(" enters player loop");
+			boolean character = g2d.drawImage(player, 0, 0, 19, 19, null);
+			System.out.println(character);
 		}
 	}
     public void activate() {

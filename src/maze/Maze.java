@@ -17,7 +17,7 @@ public class Maze {
 		this.grid = new RectangularGrid(size);
 		this.characterLocation = grid.getSource();
 		
-		ImageIcon img = new ImageIcon("/Users/bored_jason/Documents/explosion/maze/Superman.png");
+		ImageIcon img = new ImageIcon("Superman.png");
 		player = img.getImage();
 	}
 	

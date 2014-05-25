@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class MazeUi extends JPanel {
     private Maze m;
-    private Boolean player;
+    private Image player;
     private int playerX;
     private int playerY;
     private ArrayList<ArrayList<Box>> boxes;
@@ -27,6 +27,7 @@ public class MazeUi extends JPanel {
         
         //creating new player
         m.getGrid().getTiles().get(0).get(0).setPlayer(true);
+        player = m.getPlayer();
         
         for(int i = 0; i < size; i++) {
             boxes.add(i, new ArrayList<Box>());
@@ -42,11 +43,12 @@ public class MazeUi extends JPanel {
                 if((j == size-1) && (i==size-1)){
                 	isFinal = true;
                 }
-                Image player = null;
+                /*Image player = null;
                 if(t.hasPlayer()){
-                	System.out.println("x coord = " + i + " y coord = " + j);
+                	//System.out.println("x coord = " + i + " y coord = " + j);
                 	player = m.getPlayer();
                 }
+                */
         		Box b = new Box(t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), player, isFinal);
         		this.add(b,c);
                 boxes.get(i).add(b);
