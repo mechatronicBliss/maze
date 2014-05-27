@@ -30,7 +30,6 @@ public class GameInterface implements ActionListener{
         this.useCollectables = false;
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setBounds(100, 100, 600, 600);
-		
 		//make some buttons
 		JButton startButton = new JButton("Start");
 		startButton.setActionCommand("start");
@@ -65,6 +64,7 @@ public class GameInterface implements ActionListener{
 		group.add(hard);
 		
 		menuPanel = new JPanel(new GridBagLayout());
+        menuPanel.setBackground(Color.darkGray);
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
