@@ -48,8 +48,7 @@ public class Images {
 		    
 		    img = new ImageIcon("greengrass.JPG");
 		    this.finaltile = img.getImage();
-      }
-      else if(theme == 3){
+      } else if(theme == 3){
 		   ImageIcon img = new ImageIcon("Superman.png");
 		    this.player = img.getImage();
 
@@ -63,6 +62,21 @@ public class Images {
 		    this.collectables = img.getImage();  
 		    
 		    img = new ImageIcon("greengrass.JPG");
+		    this.finaltile = img.getImage();
+      } else if(theme == 4){
+		   ImageIcon img = new ImageIcon("theme4char.jpg");
+		    this.player = img.getImage();
+
+		    img = new ImageIcon("theme4tile.png");
+		    this.mazeBackground = img.getImage();
+
+		    img = new ImageIcon("theme4wall.jpg");
+		    this.wallImage = img.getImage();
+
+		    img = new ImageIcon("theme4pickup.jpg");
+		    this.collectables = img.getImage();  
+		    
+		    img = new ImageIcon("theme4goal.jpg");
 		    this.finaltile = img.getImage();
       }
 

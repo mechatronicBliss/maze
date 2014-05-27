@@ -100,19 +100,25 @@ public class GameInterface implements ActionListener{
         JRadioButton themeTwo = new JRadioButton("Theme 2");
         themeTwo.setActionCommand("theme2");
         themeTwo.addActionListener(this);
-        JRadioButton themeThree = new JRadioButton(("Theme 3"));
+        JRadioButton themeThree = new JRadioButton("Theme 3");
         themeThree.setActionCommand("theme3");
         themeThree.addActionListener(this);
-
+        JRadioButton themeFour = new JRadioButton("Space");
+        themeFour.setActionCommand("theme4");
+        themeFour.addActionListener(this);
+        
         ButtonGroup themes = new ButtonGroup();
         themes.add(themeOne);
         themes.add(themeTwo);
         themes.add(themeThree);
+        themes.add(themeFour);
         menuPanel.add(themeOne, c);
         c.gridy = 2;
         menuPanel.add(themeTwo, c);
         c.gridy = 3;
         menuPanel.add(themeThree, c);
+        c.gridy = 4;
+        menuPanel.add(themeFour, c);
 		gameFrame.add(menuPanel);
 		gameFrame.setVisible(true);
 		
@@ -156,6 +162,9 @@ public class GameInterface implements ActionListener{
         }
         else if(e.getActionCommand().equals("theme3")) {
             theme = 3;
+        }
+        else if(e.getActionCommand().equals("theme4")) {
+            theme = 4;
         }
 	}
 	public int getDifficulty() {
