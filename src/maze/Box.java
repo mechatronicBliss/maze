@@ -49,7 +49,6 @@ public class Box extends JComponent {
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawImage(mazeBackground, 0, 0, (pixelSize), (pixelSize), null);
 		if(left) {
 			g2d.drawImage(wallImage, 0, 0, (pixelSize) / 8, (pixelSize), null);
 		}

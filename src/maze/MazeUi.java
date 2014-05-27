@@ -13,8 +13,9 @@ public class MazeUi extends JPanel {
     private int collectables;
     private GameInterface gameController;
     private ArrayList<ArrayList<Box>> boxes;
+    private boolean usingCollectables;
     
-	public MazeUi(int size, Maze m, GameInterface gameController) {
+	public MazeUi(int size, Maze m, GameInterface gameController, boolean usingCollectables) {
         collectables = 0;
         this.m = m;
 		setLayout(new GridBagLayout());
@@ -30,7 +31,9 @@ public class MazeUi extends JPanel {
         this.playerX = 0;
         this.playerY = 0;
         this.gameController = gameController;
-        
+        Images background = new Images();
+        Image img = background.getBackground();
+        this.usingCollectables = usingCollectables;
         //creating new player
         m.getGrid().getTiles().get(0).get(0).setPlayer(true);
         //player = m.getPlayer();
@@ -62,12 +65,14 @@ public class MazeUi extends JPanel {
             c.gridy++;
         }
         int k = 0;
-        while(k < size) {
-            int x = (int) Math.floor(Math.random()*size);
-            int y = (int) Math.floor(Math.random()*size);
-            if(!boxes.get(x).get(y).isCollectable() && !(y == size-1 && x == size -1)) {
-                boxes.get(x).get(y).setCollectable(true);
-                k++;
+        if(usingCollectables) {
+            while(k < size) {
+                int x = (int) Math.floor(Math.random()*size);
+                int y = (int) Math.floor(Math.random()*size);
+                if(!boxes.get(x).get(y).isCollectable() && !(y == size-1 && x == size -1)) {
+                    boxes.get(x).get(y).setCollectable(true);
+                    k++;
+                }
             }
         }
         boxes.get(playerY).get(playerX).activate();
@@ -94,7 +99,7 @@ public class MazeUi extends JPanel {
             collectables++;
             b.setCollectable(false);
         }
-        if(playerX == size -1 && playerY == size -1){
+        if(playerX == size -1 && playerY == size -1 && usingCollectables){
         	
         	if(collectables == size) {
         		JOptionPane.showMessageDialog(null, "You Win!");
@@ -102,6 +107,10 @@ public class MazeUi extends JPanel {
         	} else {
         		JOptionPane.showMessageDialog(null, "please collect all the collectables");
         	}
+        }
+        else if(playerX == size -1 && playerY == size -1 && !usingCollectables) {
+            JOptionPane.showMessageDialog(null, "You Win!");
+            gameController.restart();
         }
         boxes.get(playerY).get(playerX).activate();
     }
