@@ -8,11 +8,13 @@ import java.util.Stack;
 
 public class RandomDFS implements RectangularGridGenerator {
 
-	public RandomDFS() {
-
+	private int size;
+	
+	public RandomDFS(int size) {
+		this.size = size;
 	}
 
-	public ArrayList<ArrayList<Tile>> generate(int size) {
+	public ArrayList<ArrayList<Tile>> generate() {
 		SimpleGraph<Tile> g = new SimpleGraphImp<Tile>();
 		Tile tmp = null;
 		int index = 0;

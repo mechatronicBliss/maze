@@ -14,8 +14,8 @@ public class RectangularGrid implements Grid {
 	
 	public RectangularGrid(int size) {
 		this.size = size;
-		RectangularGridGenerator generator = new RandomDFS();
-		this.tiles = generator.generate(size);
+		RectangularGridGenerator generator = new RandomDFS(size);
+		this.tiles = generator.generate();
 	}
 	
 	public ArrayList<ArrayList<Tile>> getTiles() {

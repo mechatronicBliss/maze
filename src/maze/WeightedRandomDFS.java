@@ -13,14 +13,17 @@ public class WeightedRandomDFS implements RectangularGridGenerator {
 	}
 	
 	public ArrayList<ArrayList<Tile>> generate() {
-		ArrayList<ArrayList<Boolean>> seen = new ArrayList<ArrayList<Boolean>>(size);
-		ArrayList<ArrayList<Tile>> maze = new ArrayList<ArrayList<Tile>>(size);
+		ArrayList<ArrayList<Boolean>> seen = new ArrayList<ArrayList<Boolean>>();
+		ArrayList<ArrayList<Tile>> maze = new ArrayList<ArrayList<Tile>>();
 		for (int i = 0; i < size; i++) {
-			maze.set(i,new ArrayList<Tile>(size));
+			maze.add(new ArrayList<Tile>());
 			for (int j = 0; j < size; j++) {
-				maze.get(i).set(j, new Tile((size-1-i)*size+j)); // index x-y, change to i*size+j for i-j
+				maze.get(i).add(new Tile((size-1-i)*size+j)); // index x-y, change to i*size+j for i-j
 			}
-			seen.set(i,new ArrayList<Boolean>(size));
+			seen.add(new ArrayList<Boolean>());
+			for (int j = 0; j < size; j++) {
+				seen.get(i).add(new Boolean(false));
+			}
 		}
 
 		// TODO change if start to be changed
@@ -36,6 +39,8 @@ public class WeightedRandomDFS implements RectangularGridGenerator {
 		int index = tile.getIndex();
 		int x = index/size, y = index%size;
 		seen.get(x).set(y,true);
+		
+		// check possible moves
 		if (y != size - 1 && !seen.get(x).get(y+1)) {
 			pN = 1;
 		}
@@ -48,24 +53,29 @@ public class WeightedRandomDFS implements RectangularGridGenerator {
 		if (x != 0 && !seen.get(x-1).get(y)) {
 			pW = 1;
 		}
+		
+		// repeat until all possible moves made
 		while (pN + pE + pS + pW > 1e-6) {
+			// normalise
 			double total = pN + pE + pS + pW;
 			pN /= total;
 			pE /= total;
 			pS /= total;
 			pW /= total;
+			
+			// make move from a sample of this probability distribution
 			double sample = Math.random();
 			if (sample < pN) {
 				weightedRandomDFS(maze,seen,maze.get(x).get(y+1),Tile.NORTH);
 				pN = 0;
 			} else if (sample < pN + pE) {
-				weightedRandomDFS(maze,seen,maze.get(x+1).get(y),Tile.NORTH);
+				weightedRandomDFS(maze,seen,maze.get(x+1).get(y),Tile.EAST);
 				pE = 0;
 			} else if (sample < pN + pE + pS) {
-				weightedRandomDFS(maze,seen,maze.get(x).get(y-1),Tile.NORTH);
+				weightedRandomDFS(maze,seen,maze.get(x).get(y-1),Tile.SOUTH);
 				pS = 0;
 			} else {
-				weightedRandomDFS(maze,seen,maze.get(x-1).get(y),Tile.NORTH);				
+				weightedRandomDFS(maze,seen,maze.get(x-1).get(y),Tile.WEST);				
 				pW = 0;
 			}
 		}
