@@ -15,13 +15,14 @@ public class Box extends JComponent {
     private boolean isFinal;
     private boolean hasCollectable;
     private Image collectable;
+    private Images all;
     int size;
     
     //size of the maze 
     private final int mazeSize = 600;
     private int pixelSize;
     
-	public Box(int size, boolean left, boolean right, boolean top, boolean bottom, boolean isFinal) {
+	public Box(int size, boolean left, boolean right, boolean top, boolean bottom, boolean isFinal, Images all) {
 		this.top =top;
 		this.bottom = bottom;
 		this.left = left;
@@ -30,7 +31,7 @@ public class Box extends JComponent {
         this.hasCollectable = hasCollectable;
         
         //getting all the images we need
-        Images all = new Images();
+        this.all = all;
         this.player = all.getPlayer();
         this.collectable = all.getCollectables();
 		this.mazeBackground = all.getBackground();
@@ -49,6 +50,7 @@ public class Box extends JComponent {
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
+		g2d.drawImage(mazeBackground, 0, 0, (pixelSize), (pixelSize), null);
 		if(left) {
 			g2d.drawImage(wallImage, 0, 0, (pixelSize) / 8, (pixelSize), null);
 		}
@@ -67,15 +69,14 @@ public class Box extends JComponent {
 			g2d.setColor(Color.RED);
 			g2d.fillRect(0, 0, (pixelSize) - 1, (pixelSize) - 1);
 		}
-        if(hasCollectable) {
-            boolean character = g2d.drawImage(collectable, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
-        }
 		if(active){
 			System.out.println(" enters player loop");
 			boolean character = g2d.drawImage(player, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
 			System.out.println(character);
 		}
-
+        if(hasCollectable) {
+            boolean character = g2d.drawImage(collectable, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
+        }
 	}
     public void activate() {
         this.active = true;

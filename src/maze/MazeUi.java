@@ -15,7 +15,7 @@ public class MazeUi extends JPanel {
     private ArrayList<ArrayList<Box>> boxes;
     private boolean usingCollectables;
     
-	public MazeUi(int size, Maze m, GameInterface gameController, boolean usingCollectables) {
+	public MazeUi(int size, Maze m, GameInterface gameController, boolean usingCollectables, Images img) {
         collectables = 0;
         this.m = m;
 		setLayout(new GridBagLayout());
@@ -31,8 +31,6 @@ public class MazeUi extends JPanel {
         this.playerX = 0;
         this.playerY = 0;
         this.gameController = gameController;
-        Images background = new Images();
-        Image img = background.getBackground();
         this.usingCollectables = usingCollectables;
         //creating new player
         m.getGrid().getTiles().get(0).get(0).setPlayer(true);
@@ -58,7 +56,7 @@ public class MazeUi extends JPanel {
                 	player = m.getPlayer();
                 }
                 */
-        		Box b = new Box(size, t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), isFinal);
+        		Box b = new Box(size, t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), isFinal, img);
         		this.add(b,c);
                 boxes.get(i).add(b);
         	}

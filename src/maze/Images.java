@@ -15,18 +15,46 @@ public class Images {
 		//the image of the collectables
 		private Image collectables; 
 		
-	public Images(){
-		ImageIcon img = new ImageIcon("Superman.png");
-		this.player = img.getImage();
-		
-		img = new ImageIcon("greengrass.JPG");
-		this.mazeBackground = img.getImage();
-		
-		img = new ImageIcon("brickwall.JPG");
-		this.wallImage = img.getImage();
-	
-		img = new ImageIcon("moneybags.JPG");
-		this.collectables = img.getImage();
+	public Images(int theme){
+      if(theme == 1){
+		   ImageIcon img = new ImageIcon("Superman.png");
+		    this.player = img.getImage();
+
+		    img = new ImageIcon("greengrass.JPG");
+		    this.mazeBackground = img.getImage();
+
+		    img = new ImageIcon("brickwall.JPG");
+		    this.wallImage = img.getImage();
+
+		    img = new ImageIcon("moneybags.JPG");
+		    this.collectables = img.getImage();  
+      } else if(theme == 2){
+		    ImageIcon img = new ImageIcon("Superman.png");
+		    this.player = img.getImage();
+
+		    img = new ImageIcon("greengrass.JPG");
+		    this.mazeBackground = img.getImage();
+
+		    img = new ImageIcon("brickwall.JPG");
+		    this.wallImage = img.getImage();
+
+		    img = new ImageIcon("moneybags.JPG");
+		    this.collectables = img.getImage();    
+      }
+      else if(theme == 3){
+		   ImageIcon img = new ImageIcon("Superman.png");
+		    this.player = img.getImage();
+
+		    img = new ImageIcon("greengrass.JPG");
+		    this.mazeBackground = img.getImage();
+
+		    img = new ImageIcon("brickwall.JPG");
+		    this.wallImage = img.getImage();
+
+		    img = new ImageIcon("moneybags.JPG");
+		    this.collectables = img.getImage();  
+      }
+
 	}
 	
 	public Image getPlayer(){
