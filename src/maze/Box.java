@@ -67,14 +67,15 @@ public class Box extends JComponent {
 			g2d.setColor(Color.RED);
 			g2d.fillRect(0, 0, (pixelSize) - 1, (pixelSize) - 1);
 		}
+        if(hasCollectable) {
+            boolean character = g2d.drawImage(collectable, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
+        }
 		if(active){
 			System.out.println(" enters player loop");
 			boolean character = g2d.drawImage(player, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
 			System.out.println(character);
 		}
-        if(hasCollectable) {
-            boolean character = g2d.drawImage(collectable, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
-        }
+
 	}
     public void activate() {
         this.active = true;
