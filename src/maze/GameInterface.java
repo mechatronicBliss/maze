@@ -166,7 +166,7 @@ public class GameInterface implements ActionListener{
         gameState = new GameState(size, p);
         Images imgs = new Images(theme);
 		gameFrame.setBounds(100, 100, 1200, 1000);
-        m = new MazeUi(size, gameState.getMaze(), this, useCollectables);
+        m = new MazeUi(size, gameState.getMaze(), this, useCollectables, imgs);
         KeyListenerMaze k =  new KeyListenerMaze(gameState, m);
         gameFrame.addKeyListener(k);
 		gameFrame.add(m, BorderLayout.WEST);
