@@ -6,14 +6,16 @@ import javax.swing.*;
 
 
 public class GameInterface implements ActionListener{
-	private int difficulty;
+	private int size;
+	private double p;
 	private GameState gameState;
 	private JFrame gameFrame;
     private JPanel menuPanel;
     private MazeUi m;
     private JPanel sideBar;
 	public GameInterface() {
-		difficulty = 10;
+		size = 10;
+		p = 0.25;
         gameFrame = new JFrame();
 		displayMenu();
 	}
@@ -87,16 +89,19 @@ public class GameInterface implements ActionListener{
 			startGame();
 		}
 		else if(e.getActionCommand().equals("e")) {
-			difficulty = 10;
+			size = 10;
+			p = 0.25;
 		}
 		else if(e.getActionCommand().equals("m")) {
-			difficulty = 15;
+			size = 15;
+			p = 0.15;
 		}
 		else if(e.getActionCommand().equals("h")) {
-			difficulty = 30;
+			size = 25;
+			p = 0;
 		}
 		else if(e.getActionCommand().equals("custom")) {
-			difficulty = 40;
+			size = 40;
 			//open custom screen
 		}
         else if(e.getActionCommand().equals("exit")) {
@@ -104,14 +109,14 @@ public class GameInterface implements ActionListener{
         }
 	}
 	public int getDifficulty() {
-		return difficulty;
+		return size;
 	}
 	private void startGame() {
         gameFrame.remove(menuPanel);
-        gameState = new GameState(difficulty);
+        gameState = new GameState(size, p);
 
 		gameFrame.setBounds(100, 100, 1200, 1000);
-        m = new MazeUi(difficulty, gameState.getMaze(), this);
+        m = new MazeUi(size, gameState.getMaze(), this);
         KeyListenerMaze k =  new KeyListenerMaze(gameState, m);
         gameFrame.addKeyListener(k);
 		gameFrame.add(m, BorderLayout.WEST);

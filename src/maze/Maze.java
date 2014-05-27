@@ -9,8 +9,8 @@ public class Maze {
 	private Tile characterLocation;
 	private Grid grid;
 	
-	public Maze(int size) {
-		this.grid = new RectangularGrid(size);
+	public Maze(int size, double p) {
+		this.grid = new RectangularGrid(size, p);
 		this.characterLocation = grid.getSource();
 		
 	}

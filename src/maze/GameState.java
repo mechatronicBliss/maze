@@ -6,8 +6,8 @@ public class GameState {
 	private Maze maze;
 	//private KeyListenerMaze k; 
 	
-	public GameState(int size) {
-		this.maze = new Maze(size);
+	public GameState(int size, double p) {
+		this.maze = new Maze(size, p);
 		//this.k = new KeyListenerMaze(this);
 	}
 	

@@ -10,10 +10,11 @@ public class RandomDFS implements RectangularGridGenerator {
 
 	private int size;
 	//0 <= P < = 1
-	private static final double P_VALUE_EASY = 0.25;
+	private double P_VALUE_EASY;
 	
-	public RandomDFS(int size) {
+	public RandomDFS(int size, double p) {
 		this.size = size;
+		P_VALUE_EASY = p;
 	}
 
 	public ArrayList<ArrayList<Tile>> generate() {
