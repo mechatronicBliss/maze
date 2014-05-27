@@ -18,20 +18,23 @@ public class Box extends JComponent {
     int size;
     
     //size of the maze 
-    private final int mazeSize = 800;
+    private final int mazeSize = 600;
     private int pixelSize;
     
-	public Box(int size, boolean left, boolean right, boolean top, boolean bottom,
-			Image player, Image mazeBackground, Image wallImage, Image collectable, boolean isFinal) {
+	public Box(int size, boolean left, boolean right, boolean top, boolean bottom, boolean isFinal) {
 		this.top =top;
 		this.bottom = bottom;
 		this.left = left;
 		this.right = right;
+		
         this.hasCollectable = hasCollectable;
-        this.collectable = collectable;
-		this.player = player;
-		this.mazeBackground = mazeBackground;
-		this.wallImage = wallImage;
+        
+        //getting all the images we need
+        Images all = new Images();
+        this.player = all.getPlayer();
+        this.collectable = all.getCollectables();
+		this.mazeBackground = all.getBackground();
+		this.wallImage = all.getWallImage();
 		
         this.active = false;
         this.isFinal = isFinal;

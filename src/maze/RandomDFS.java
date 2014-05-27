@@ -8,6 +8,10 @@ import java.util.Stack;
 
 public class RandomDFS implements RectangularGridGenerator {
 
+	//0 <= P < = 1
+	private static final double P_VALUE_EASY = 0.25;
+	
+	
 	public RandomDFS() {
 
 	}
@@ -38,7 +42,7 @@ public class RandomDFS implements RectangularGridGenerator {
 			}	
 		}
 		//remove some walls
-		randomDFS(g, maze, size);
+		randomDFS(g, maze, size, true);
 		return maze;
 	}
 
@@ -49,7 +53,7 @@ public class RandomDFS implements RectangularGridGenerator {
 	 * @param size
 	 */
 
-	private void randomDFS(SimpleGraph<Tile> g, ArrayList<ArrayList<Tile>> maze, int size) {
+private void randomDFS(SimpleGraph<Tile> g, ArrayList<ArrayList<Tile>> maze, int size, boolean repeat) {
 		
 		ArrayList<Tile> seen = new ArrayList<Tile>();
 		Stack<Tile> toVisit = new Stack<Tile>();
@@ -58,6 +62,7 @@ public class RandomDFS implements RectangularGridGenerator {
 		
 		Tile n = g.getMysteryNode();
 		toVisit.push(n);
+		double p = Math.random();
 
 		while (!toVisit.isEmpty()) {
 			n = toVisit.pop();
@@ -80,24 +85,23 @@ public class RandomDFS implements RectangularGridGenerator {
 			//remove the wall between n and its parent
 			if (!toVisit.empty()) {
 				if (parents.containsKey(n)) {
-					removeWall(maze.size(), n, parents.get(n));
+					p = Math.random();
+					if (!repeat) {
+						if (p < P_VALUE_EASY) {
+							removeWall(maze.size(), n, parents.get(n));
+						}
+					} else {
+						removeWall(maze.size(), n, parents.get(n));
+					}
 				} 
 			}
 		}
 		//for the last Tile
 		removeWall(maze.size(), n, parents.get(n));
 		
-		/*
-		//dirty fix for boundaries
-		for (int j = 0; j < size; j++) {
-			maze.get(j).get(0).addWall("south");
-			maze.get(j).get(size -1).addWall("north");
-			
-			maze.get(0).get(j).addWall("west");
-			maze.get(size -1).get(j).addWall("east");
+		if (repeat) {
+			randomDFS(g, maze, size, false);
 		}
-		*/
-		
 	}
 
 	
