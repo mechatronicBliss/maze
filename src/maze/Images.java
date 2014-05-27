@@ -17,16 +17,16 @@ public class Images {
 		
 	public Images(int theme){
       if(theme == 1){
-		   ImageIcon img = new ImageIcon("Superman.png");
+		   ImageIcon img = new ImageIcon("theme1char.png");
 		    this.player = img.getImage();
 
-		    img = new ImageIcon("greengrass.JPG");
+		    img = new ImageIcon("theme1tile.png");
 		    this.mazeBackground = img.getImage();
 
-		    img = new ImageIcon("brickwall.JPG");
+		    img = new ImageIcon("theme1wall.jpg");
 		    this.wallImage = img.getImage();
 
-		    img = new ImageIcon("moneybags.JPG");
+		    img = new ImageIcon("theme1pickup.png");
 		    this.collectables = img.getImage();  
       } else if(theme == 2){
 		    ImageIcon img = new ImageIcon("Superman.png");
