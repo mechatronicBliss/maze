@@ -87,13 +87,6 @@ public class MazeUi extends JPanel {
         else if(direction == Tile.WEST) {
             playerX--;
         }
-        if(b.isCollectable()) {
-            collectables++;
-            if(collectables == size) {
-                boxes.get(size-1).get(size-1).activateWinningBox();
-            }
-            b.setCollectable(false);
-        }
         if(playerX == size -1 && playerY == size -1 && usingCollectables){
         	
         	if(collectables == size) {
@@ -107,7 +100,16 @@ public class MazeUi extends JPanel {
             JOptionPane.showMessageDialog(null, "You Win!");
             gameController.restart();
         }
-        boxes.get(playerY).get(playerX).activate();
+        b = boxes.get(playerY).get(playerX);
+        b.activate();
+        if(b.isCollectable()) {
+            collectables++;
+            if(collectables == size) {
+                boxes.get(size-1).get(size-1).activateWinningBox();
+            }
+            b.setCollectable(false);
+        }
+        //boxes.get(playerY).get(playerX).setCollectable(false);
     }
     @Override
     protected void paintComponent(Graphics g) {
