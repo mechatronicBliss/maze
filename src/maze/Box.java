@@ -11,10 +11,11 @@ public class Box extends JComponent {
 	private Image player;
 	private Image mazeBackground;
 	private Image wallImage;
+	private Image collectable;
+	private Image finalTile;
     private boolean active;
     private boolean isFinal;
     private boolean hasCollectable;
-    private Image collectable;
     private Images all;
     int size;
     
@@ -36,6 +37,7 @@ public class Box extends JComponent {
         this.collectable = all.getCollectables();
 		this.mazeBackground = all.getBackground();
 		this.wallImage = all.getWallImage();
+		this.finalTile = all.getFinalTile();
 		
         this.active = false;
         this.isFinal = isFinal;
@@ -66,8 +68,7 @@ public class Box extends JComponent {
 	
 		}
 		if(isFinal){
-			g2d.setColor(Color.YELLOW);
-			g2d.fillRect(0, 0, (pixelSize) - 1, (pixelSize) - 1);
+			g2d.drawImage(finalTile, 0, 0, (pixelSize), (pixelSize), null);
 		}
         if(hasCollectable) {
             boolean character = g2d.drawImage(collectable, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);

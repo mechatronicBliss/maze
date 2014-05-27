@@ -15,6 +15,8 @@ public class Images {
 		//the image of the collectables
 		private Image collectables; 
 		
+		private Image finaltile;
+		
 	public Images(int theme){
       if(theme == 1){
 		   ImageIcon img = new ImageIcon("theme1char.png");
@@ -28,6 +30,9 @@ public class Images {
 
 		    img = new ImageIcon("theme1pickup.png");
 		    this.collectables = img.getImage();  
+		    
+		    img = new ImageIcon("greengrass.JPG");
+		    this.finaltile = img.getImage();
       } else if(theme == 2){
 		    ImageIcon img = new ImageIcon("Superman.png");
 		    this.player = img.getImage();
@@ -40,6 +45,9 @@ public class Images {
 
 		    img = new ImageIcon("moneybags.JPG");
 		    this.collectables = img.getImage();    
+		    
+		    img = new ImageIcon("greengrass.JPG");
+		    this.finaltile = img.getImage();
       }
       else if(theme == 3){
 		   ImageIcon img = new ImageIcon("Superman.png");
@@ -53,6 +61,9 @@ public class Images {
 
 		    img = new ImageIcon("moneybags.JPG");
 		    this.collectables = img.getImage();  
+		    
+		    img = new ImageIcon("greengrass.JPG");
+		    this.finaltile = img.getImage();
       }
 
 	}
@@ -70,5 +81,9 @@ public class Images {
 	
 	public Image getCollectables(){
 		return this.collectables;
+	}
+	
+	public Image getFinalTile(){
+		return this.finaltile;
 	}
 }
