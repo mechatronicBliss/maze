@@ -23,13 +23,14 @@ public class Box extends JComponent {
     private final int mazeSize = 600;
     private int pixelSize;
     
-	public Box(int size, boolean left, boolean right, boolean top, boolean bottom, boolean isFinal, Images all) {
+	public Box(int size, boolean left, boolean right, boolean top, boolean bottom, Images all) {
 		this.top =top;
 		this.bottom = bottom;
 		this.left = left;
 		this.right = right;
+        this.isFinal= false;
 		
-        this.hasCollectable = hasCollectable;
+        this.hasCollectable = false;
         
         //getting all the images we need
         this.all = all;
@@ -85,6 +86,10 @@ public class Box extends JComponent {
     }
     public void deactivate() {
         this.active = false;
+        repaint();
+    }
+    public void activateWinningBox() {
+        this.isFinal = true;
         repaint();
     }
     public boolean isCollectable() {

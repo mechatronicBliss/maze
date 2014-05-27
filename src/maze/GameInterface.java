@@ -179,4 +179,7 @@ public class GameInterface implements ActionListener{
         gameFrame = new JFrame();
         displayMenu();
     }
+    private void openCustom() {
+
+    }
 }
