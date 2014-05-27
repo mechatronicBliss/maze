@@ -12,6 +12,7 @@ public class GameInterface implements ActionListener{
 	private JFrame gameFrame;
     private JPanel menuPanel;
     private MazeUi m;
+    private int theme;
     private JPanel sideBar;
     private boolean useCollectables;
 	public GameInterface() {
@@ -20,8 +21,10 @@ public class GameInterface implements ActionListener{
         gameFrame = new JFrame();
 		displayMenu();
         this.useCollectables = false;
+        this.theme = 1;
 	}
 	private void displayMenu() {
+        this.theme = 1;
         this.size = 10;
         this.p = 0.25;
         this.useCollectables = false;
@@ -88,7 +91,28 @@ public class GameInterface implements ActionListener{
         collectables.setActionCommand("collect");
         collectables.addActionListener(this);
         menuPanel.add(collectables, c);
-		
+        c.gridx = 1;
+        c.gridy = 1;
+        JRadioButton themeOne = new JRadioButton("Theme 1");
+        themeOne.setActionCommand("theme1");
+        themeOne.setSelected(true);
+        themeOne.addActionListener(this);
+        JRadioButton themeTwo = new JRadioButton("Theme 2");
+        themeTwo.setActionCommand("theme2");
+        themeTwo.addActionListener(this);
+        JRadioButton themeThree = new JRadioButton(("Theme 3"));
+        themeThree.setActionCommand("theme3");
+        themeThree.addActionListener(this);
+
+        ButtonGroup themes = new ButtonGroup();
+        themes.add(themeOne);
+        themes.add(themeTwo);
+        themes.add(themeThree);
+        menuPanel.add(themeOne, c);
+        c.gridy = 2;
+        menuPanel.add(themeTwo, c);
+        c.gridy = 3;
+        menuPanel.add(themeThree, c);
 		gameFrame.add(menuPanel);
 		gameFrame.setVisible(true);
 		
@@ -124,6 +148,15 @@ public class GameInterface implements ActionListener{
         else if(e.getActionCommand().equals("showInstructions")) {
             JOptionPane.showMessageDialog(null, "YOLO");
         }
+        else if(e.getActionCommand().equals("theme1")) {
+            theme = 1;
+        }
+        else if(e.getActionCommand().equals("theme2")) {
+            theme = 2;
+        }
+        else if(e.getActionCommand().equals("theme3")) {
+            theme = 3;
+        }
 	}
 	public int getDifficulty() {
 		return size;
@@ -131,7 +164,7 @@ public class GameInterface implements ActionListener{
 	private void startGame() {
         gameFrame.remove(menuPanel);
         gameState = new GameState(size, p);
-
+        Images imgs = new Images(theme);
 		gameFrame.setBounds(100, 100, 1200, 1000);
         m = new MazeUi(size, gameState.getMaze(), this, useCollectables);
         KeyListenerMaze k =  new KeyListenerMaze(gameState, m);
