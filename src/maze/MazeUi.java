@@ -47,18 +47,7 @@ public class MazeUi extends JPanel {
                 c.gridx = j;
                 
                 Tile t = m.getGrid().getTiles().get(j).get(i);
-                //adding finish tile 
-                boolean isFinal = false;
-                if((j == size-1) && (i==size-1)){
-                	isFinal = true;
-                }
-                /*Image player = null;
-                if(t.hasPlayer()){
-                	//System.out.println("x coord = " + i + " y coord = " + j);
-                	player = m.getPlayer();
-                }
-                */
-        		Box b = new Box(size, t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), isFinal, imgs);
+        		Box b = new Box(size, t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), imgs);
         		this.add(b,c);
                 boxes.get(i).add(b);
         	}
@@ -74,6 +63,9 @@ public class MazeUi extends JPanel {
                     k++;
                 }
             }
+        }
+        else {
+            boxes.get(size-1).get(size-1).activateWinningBox();
         }
         boxes.get(playerY).get(playerX).activate();
         this.validate();
@@ -97,6 +89,9 @@ public class MazeUi extends JPanel {
         }
         if(b.isCollectable()) {
             collectables++;
+            if(collectables == size) {
+                boxes.get(size-1).get(size-1).activateWinningBox();
+            }
             b.setCollectable(false);
         }
         if(playerX == size -1 && playerY == size -1 && usingCollectables){
