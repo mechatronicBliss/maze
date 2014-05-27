@@ -14,8 +14,10 @@ public class MazeUi extends JPanel {
     private GameInterface gameController;
     private ArrayList<ArrayList<Box>> boxes;
     private boolean usingCollectables;
+    private Images imgs;
     
-	public MazeUi(int size, Maze m, GameInterface gameController, boolean usingCollectables, Images img) {
+	public MazeUi(int size, Maze m, GameInterface gameController, boolean usingCollectables, Images imgs) {
+        this.imgs = imgs;
         collectables = 0;
         this.m = m;
 		setLayout(new GridBagLayout());
@@ -56,7 +58,7 @@ public class MazeUi extends JPanel {
                 	player = m.getPlayer();
                 }
                 */
-        		Box b = new Box(size, t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), isFinal, img);
+        		Box b = new Box(size, t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), isFinal, imgs);
         		this.add(b,c);
                 boxes.get(i).add(b);
         	}
@@ -111,5 +113,10 @@ public class MazeUi extends JPanel {
             gameController.restart();
         }
         boxes.get(playerY).get(playerX).activate();
+    }
+    @Override
+    protected void paintComponent(Graphics g) {
+
+        g.drawImage(imgs.getBackground(), 0, 0, null);
     }
 }
