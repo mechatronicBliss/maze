@@ -93,7 +93,7 @@ public class GameInterface implements ActionListener{
         menuPanel.add(collectables, c);
         c.gridx = 1;
         c.gridy = 1;
-        JRadioButton themeOne = new JRadioButton("Theme 1");
+        JRadioButton themeOne = new JRadioButton("IRON MAN!");
         themeOne.setActionCommand("theme1");
         themeOne.setSelected(true);
         themeOne.addActionListener(this);
