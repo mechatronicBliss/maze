@@ -33,7 +33,7 @@ public class MazeUi extends JPanel {
         
         //creating new player
         m.getGrid().getTiles().get(0).get(0).setPlayer(true);
-        player = m.getPlayer();
+        //player = m.getPlayer();
         
         for(int i = 0; i < size; i++) {
             boxes.add(i, new ArrayList<Box>());
@@ -55,8 +55,7 @@ public class MazeUi extends JPanel {
                 	player = m.getPlayer();
                 }
                 */
-        		Box b = new Box(size, t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), 
-        				player, m.getBackground(), m.getWallImage(), m.getCollectables(), isFinal);
+        		Box b = new Box(size, t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), isFinal);
         		this.add(b,c);
                 boxes.get(i).add(b);
         	}
@@ -70,7 +69,6 @@ public class MazeUi extends JPanel {
                 boxes.get(x).get(y).setCollectable(true);
                 k++;
             }
-
         }
         boxes.get(playerY).get(playerX).activate();
         this.validate();
