@@ -2,23 +2,35 @@ package maze;
 
 import java.util.ArrayList;
 
+/**
+ * A rectangular grid generator that may be parametrised to form longer straight corridors or have more branching as desired.
+ */
 public class WeightedRandomDFS implements RectangularGridGenerator {
 
 	private int size;
 	private double difficulty;
 	
+	/**
+	 * Constructs a new WeightedRandomDFS object to generate mazes of a specified size and difficulty
+	 * @param size required size
+	 * @param difficulty parameter
+	 */
 	public WeightedRandomDFS(int size, double difficulty) {
 		this.size = size;
 		this.difficulty = difficulty;
 	}
 	
+	/**
+	 * Removes walls from a grid of fully walled tiles to form a maze.
+	 * @return maze
+	 */
 	public ArrayList<ArrayList<Tile>> generate() {
 		ArrayList<ArrayList<Boolean>> seen = new ArrayList<ArrayList<Boolean>>();
 		ArrayList<ArrayList<Tile>> maze = new ArrayList<ArrayList<Tile>>();
 		for (int i = 0; i < size; i++) {
 			maze.add(new ArrayList<Tile>());
 			for (int j = 0; j < size; j++) {
-				maze.get(i).add(new Tile((size-1-i)*size+j)); // index x-y, change to i*size+j for i-j
+				maze.get(i).add(new Tile((size-1-i)*size+j)); // index x-y
 			}
 			seen.add(new ArrayList<Boolean>());
 			for (int j = 0; j < size; j++) {
@@ -26,7 +38,6 @@ public class WeightedRandomDFS implements RectangularGridGenerator {
 			}
 		}
 
-		// TODO change if start to be changed
 		seen.get(0).set(0,true);
 		Tile tile = maze.get(0).get(0);
 		weightedRandomDFS(maze,seen,tile,null);
@@ -34,6 +45,13 @@ public class WeightedRandomDFS implements RectangularGridGenerator {
 		return maze;
 	}
 
+	/**
+	 * Performs a random DFS, weighted to favour the last move for longer corridors, or against it for greater branching
+	 * @param maze 2D array of tiles
+	 * @param seen tiles already expanded
+	 * @param tile current tile
+	 * @param lastDir direction of last move
+	 */
 	private void weightedRandomDFS(ArrayList<ArrayList<Tile>> maze, ArrayList<ArrayList<Boolean>> seen, Tile tile, Integer lastDir) {
 		double pN = 0, pE = 0, pS = 0, pW = 0;
 		int index = tile.getIndex();
@@ -43,15 +61,27 @@ public class WeightedRandomDFS implements RectangularGridGenerator {
 		// check possible moves
 		if (y != size - 1 && !seen.get(x).get(y+1)) {
 			pN = 1;
+			if (lastDir == Tile.NORTH) {
+				pN += difficulty;
+			}
 		}
 		if (x != size - 1 && !seen.get(x+1).get(y)) {
 			pE = 1;
+			if (lastDir == Tile.EAST) {
+				pE += difficulty;
+			}
 		}
 		if (y != 0 && !seen.get(x).get(y-1)) {
 			pS = 1;
+			if (lastDir == Tile.SOUTH) {
+				pS += difficulty;
+			}
 		}
 		if (x != 0 && !seen.get(x-1).get(y)) {
 			pW = 1;
+			if (lastDir == Tile.WEST) {
+				pW += difficulty;
+			}
 		}
 		
 		// repeat until all possible moves made
@@ -66,15 +96,19 @@ public class WeightedRandomDFS implements RectangularGridGenerator {
 			// make move from a sample of this probability distribution
 			double sample = Math.random();
 			if (sample < pN) {
+				removeWall(maze.get(x).get(y),maze.get(x).get(y+1));
 				weightedRandomDFS(maze,seen,maze.get(x).get(y+1),Tile.NORTH);
 				pN = 0;
 			} else if (sample < pN + pE) {
+				removeWall(maze.get(x).get(y),maze.get(x+1).get(y));
 				weightedRandomDFS(maze,seen,maze.get(x+1).get(y),Tile.EAST);
 				pE = 0;
 			} else if (sample < pN + pE + pS) {
+				removeWall(maze.get(x).get(y),maze.get(x).get(y-1));
 				weightedRandomDFS(maze,seen,maze.get(x).get(y-1),Tile.SOUTH);
 				pS = 0;
 			} else {
+				removeWall(maze.get(x).get(y),maze.get(x-1).get(y));
 				weightedRandomDFS(maze,seen,maze.get(x-1).get(y),Tile.WEST);				
 				pW = 0;
 			}
@@ -82,9 +116,8 @@ public class WeightedRandomDFS implements RectangularGridGenerator {
 	}
 
 	
-	/**removes the walls between 2 Tiles (assumes its given adjacent Tiles!!!)
-	 * 
-	 * @param size
+	/**removes the walls between 2 Tiles
+	 * @precondition tiles a and b adjacent
 	 * @param a
 	 * @param b
 	 */
