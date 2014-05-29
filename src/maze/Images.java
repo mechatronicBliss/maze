@@ -84,7 +84,7 @@ public class Images {
 		    img = new ImageIcon("theme4wall.jpg");
 		    this.wallImage = img.getImage();
 
-		    img = new ImageIcon("theme4pickup.jpg");
+		    img = new ImageIcon("theme4pickup.png");
 		    this.collectables = img.getImage();  
 		    
 		    img = new ImageIcon("theme4goal.jpg");
