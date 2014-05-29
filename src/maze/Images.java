@@ -90,7 +90,7 @@ public class Images {
 		    img = new ImageIcon("theme4goal.jpg");
 		    this.finaltile = img.getImage();
 
-          //img = new ImageIcon(this themes frame background)
+          img = new ImageIcon("theme4bg.jpg");
           this.frameBackground = img.getImage();
       }
 	}
