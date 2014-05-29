@@ -50,12 +50,11 @@ public class GameInterface implements ActionListener{
 		hard.setActionCommand("h");
 		hard.addActionListener(this);
 
-        JButton exit = new JButton("Exit");
-        exit.setActionCommand("exit");
-        exit.addActionListener(this);
 
-        sideBar = new JPanel(new GridBagLayout());
-        sideBar.add(exit);
+
+        /*sideBar = new JPanel(new GridBagLayout());
+        sideBar.setOpaque(false);
+        sideBar.add(exit);    */
 		
 		//group the radios
 		ButtonGroup group = new ButtonGroup();
@@ -174,13 +173,11 @@ public class GameInterface implements ActionListener{
         gameFrame.remove(menuPanel);
         gameState = new GameState(size, p);
         Images imgs = new Images(theme);
-		gameFrame.setBounds(100, 100, 1200, 1000);
+		gameFrame.setBounds(10, 0, 1400, 1000);
         m = new MazeUi(size, gameState.getMaze(), this, useCollectables, imgs);
         KeyListenerMaze k =  new KeyListenerMaze(gameState, m);
         gameFrame.addKeyListener(k);
-		gameFrame.add(m, BorderLayout.WEST);
-        gameFrame.add(sideBar);
-        gameFrame.pack();
+		gameFrame.add(m, BorderLayout.CENTER);
         gameFrame.requestFocusInWindow();
 	}
     public void restart() {

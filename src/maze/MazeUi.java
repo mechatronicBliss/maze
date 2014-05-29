@@ -67,6 +67,14 @@ public class MazeUi extends JPanel {
         else {
             boxes.get(size-1).get(size-1).activateWinningBox();
         }
+        JButton exit = new JButton("Exit");
+        exit.setActionCommand("exit");
+        exit.addActionListener(gameController);
+        exit.setOpaque(false);
+        c.gridy = 0;
+        c.gridx = size;
+        c.gridheight = 2;
+        this.add(exit, c);
         boxes.get(playerY).get(playerX).activate();
         this.validate();
         this.repaint();
@@ -113,7 +121,8 @@ public class MazeUi extends JPanel {
     }
     @Override
     protected void paintComponent(Graphics g) {
-
-        g.drawImage(imgs.getBackground(), 0, 0, null);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(imgs.getFrameBackground(), 0, 0, 1400, 1000, null);
+        //g2d.drawImage(mazeBackground, 0, 0, (pixelSize), (pixelSize), null);
     }
 }

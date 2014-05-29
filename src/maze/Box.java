@@ -54,31 +54,32 @@ public class Box extends JComponent {
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(mazeBackground, 0, 0, (pixelSize), (pixelSize), null);
-		if(left) {
-			g2d.drawImage(wallImage, 0, 0, (pixelSize) / 8, (pixelSize), null);
-		}
-		if(top) {
-			g2d.drawImage(wallImage, 0, 0, (pixelSize), (pixelSize) / 8, null);
-		}
-		
-		if(bottom) {
-			g2d.drawImage(wallImage, 0, (pixelSize) - 2, (pixelSize), (pixelSize) / 3, null);
-		}
-		if(right) {
-			g2d.drawImage(wallImage, (pixelSize) - 3, 0, (pixelSize) / 8, (pixelSize), null);
-	
-		}
+
 		if(isFinal){
 			g2d.drawImage(finalTile, 0, 0, (pixelSize), (pixelSize), null);
 		}
         if(hasCollectable) {
             boolean character = g2d.drawImage(collectable, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
         }
-		if(active){
-			System.out.println(" enters player loop");
-			boolean character = g2d.drawImage(player, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
-			System.out.println(character);
-		}
+        if(left) {
+            g2d.drawImage(wallImage, 0, 0, (pixelSize) / 8, (pixelSize), null);
+        }
+        if(top) {
+            g2d.drawImage(wallImage, 0, 0, (pixelSize), (pixelSize) / 8, null);
+        }
+
+        if(bottom) {
+            g2d.drawImage(wallImage, 0, (pixelSize) - 2, (pixelSize), (pixelSize) / 3, null);
+        }
+        if(right) {
+            g2d.drawImage(wallImage, (pixelSize) - 3, 0, (pixelSize) / 8, (pixelSize), null);
+
+        }
+        if(active){
+            System.out.println(" enters player loop");
+            boolean character = g2d.drawImage(player, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
+            System.out.println(character);
+        }
 	}
     public void activate() {
         this.active = true;

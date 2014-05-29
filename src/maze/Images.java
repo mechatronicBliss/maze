@@ -16,10 +16,12 @@ public class Images {
 		private Image collectables; 
 		
 		private Image finaltile;
+
+        private Image frameBackground;
 		
 	public Images(int theme){
       if(theme == 1){
-		   ImageIcon img = new ImageIcon("theme1char.png");
+		   ImageIcon img = new ImageIcon("ironManChar.png");
 		    this.player = img.getImage();
 
 		    img = new ImageIcon("theme1tile.png");
@@ -33,6 +35,9 @@ public class Images {
 		    
 		    img = new ImageIcon("greengrass.JPG");
 		    this.finaltile = img.getImage();
+
+            img = new ImageIcon("ironmansIsAwesome.jpg");
+            this.frameBackground = img.getImage();
       } else if(theme == 2){
 		    ImageIcon img = new ImageIcon("Superman.png");
 		    this.player = img.getImage();
@@ -48,6 +53,9 @@ public class Images {
 		    
 		    img = new ImageIcon("greengrass.JPG");
 		    this.finaltile = img.getImage();
+
+            //img = new ImageIcon(this themes frame background)
+            this.frameBackground = img.getImage();
       } else if(theme == 3){
 		   ImageIcon img = new ImageIcon("Superman.png");
 		    this.player = img.getImage();
@@ -63,6 +71,9 @@ public class Images {
 		    
 		    img = new ImageIcon("greengrass.JPG");
 		    this.finaltile = img.getImage();
+
+          //img = new ImageIcon(this themes frame background)
+          this.frameBackground = img.getImage();
       } else if(theme == 4){
 		   ImageIcon img = new ImageIcon("theme4char.jpg");
 		    this.player = img.getImage();
@@ -78,8 +89,10 @@ public class Images {
 		    
 		    img = new ImageIcon("theme4goal.jpg");
 		    this.finaltile = img.getImage();
-      }
 
+          //img = new ImageIcon(this themes frame background)
+          this.frameBackground = img.getImage();
+      }
 	}
 	
 	public Image getPlayer(){
@@ -100,4 +113,8 @@ public class Images {
 	public Image getFinalTile(){
 		return this.finaltile;
 	}
+
+    public Image getFrameBackground() {
+        return this.frameBackground;
+    }
 }
