@@ -2,11 +2,11 @@ package maze;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class MazeUi extends JPanel {
     private Maze m;
-    private Image player;
     private int playerX;
     private int playerY;
     private int size;
@@ -15,11 +15,13 @@ public class MazeUi extends JPanel {
     private ArrayList<ArrayList<Box>> boxes;
     private boolean usingCollectables;
     private Images imgs;
+    private boolean instructions;
     
 	public MazeUi(int size, Maze m, GameInterface gameController, boolean usingCollectables, Images imgs) {
         this.imgs = imgs;
         collectables = 0;
         this.m = m;
+        this.instructions = true;
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		this.boxes = new ArrayList<ArrayList<Box>>();
@@ -77,6 +79,7 @@ public class MazeUi extends JPanel {
         boxes.get(playerY).get(playerX).activate();
         this.validate();
         this.repaint();
+       
 	}
 	
     public void move(int direction) {
@@ -121,5 +124,11 @@ public class MazeUi extends JPanel {
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(imgs.getFrameBackground(), 0, 0, 1400, 1000, null);
+
+        
+   		 if(instructions){
+   	        JOptionPane.showMessageDialog(null, imgs.getInstructions());
+   	        instructions = false;
+   	       }
     }
 }

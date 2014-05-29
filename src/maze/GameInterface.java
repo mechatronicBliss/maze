@@ -37,12 +37,12 @@ public class GameInterface extends JComponent implements ActionListener{
 		JButton startButton = new JButton("Start");
 		startButton.setActionCommand("start");
 		startButton.addActionListener(this);
-		startButton.setFont(new Font("Arial", Font.BOLD, 20));
+		startButton.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		JButton instructions = new JButton("Instructions");
 		instructions.setActionCommand("showInstructions");
 		instructions.addActionListener(this);
-		instructions.setFont(new Font("Arial", Font.BOLD, 20));
+		instructions.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		//JButton custom = new JButton("custom");
 		
@@ -85,10 +85,15 @@ public class GameInterface extends JComponent implements ActionListener{
 		
 		c.gridx = 0;
 		c.gridy = 1;
+		JLabel levelLabel = new JLabel();
+		levelLabel.setText("Levels");
+        levelLabel.setForeground(Color.yellow);
+        menuPanel.add(levelLabel, c);
+        c.gridy = 2;
         menuPanel.add(easy, c);
-		c.gridy = 2;
-        menuPanel.add(medium, c);
 		c.gridy = 3;
+        menuPanel.add(medium, c);
+		c.gridy = 4;
         menuPanel.add(hard, c);
         
         c.gridx = 2;
@@ -102,20 +107,20 @@ public class GameInterface extends JComponent implements ActionListener{
        
         c.gridx = 1;
         c.gridy = 1;
-        JRadioButton themeOne = new JRadioButton("Theme 1");
+        JRadioButton themeOne = new JRadioButton("Theme1");
         themeOne.setActionCommand("theme1");
         themeOne.setSelected(true);
         themeOne.addActionListener(this);
         themeOne.setForeground(Color.yellow);
-        JRadioButton themeTwo = new JRadioButton("Theme 2");
+        JRadioButton themeTwo = new JRadioButton("Theme2");
         themeTwo.setActionCommand("theme2");
         themeTwo.addActionListener(this);
         themeTwo.setForeground(Color.yellow);
-        JRadioButton themeThree = new JRadioButton("Theme 3");
+        JRadioButton themeThree = new JRadioButton("Theme3");
         themeThree.setActionCommand("theme3");
         themeThree.addActionListener(this);
         themeThree.setForeground(Color.yellow);
-        JRadioButton themeFour = new JRadioButton("Theme 4");
+        JRadioButton themeFour = new JRadioButton("Theme4");
         themeFour.setActionCommand("theme4");
         themeFour.setForeground(Color.yellow);
         themeFour.addActionListener(this);
@@ -169,7 +174,8 @@ public class GameInterface extends JComponent implements ActionListener{
             useCollectables = !useCollectables;
         }
         else if(e.getActionCommand().equals("showInstructions")) {
-            JOptionPane.showMessageDialog(null, "YOLO");
+            JOptionPane.showMessageDialog(null, "Please Choose a Level"
+            		+ " ,a Theme and press Start");
         }
         else if(e.getActionCommand().equals("theme1")) {
             theme = 1;

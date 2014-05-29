@@ -18,8 +18,11 @@ public class Images {
 		private Image finaltile;
 
         private Image frameBackground;
+        
+        int theme;
 		
 	public Images(int theme){
+		this.theme = theme;
       if(theme == 1){
 		   ImageIcon img = new ImageIcon("ironManChar.png");
 		    this.player = img.getImage();
@@ -39,7 +42,7 @@ public class Images {
             img = new ImageIcon("ironmansIsAwesome.jpg");
             this.frameBackground = img.getImage();
       } else if(theme == 2){
-		    ImageIcon img = new ImageIcon("Superman.png");
+		    ImageIcon img = new ImageIcon("theme2character.png");
 		    this.player = img.getImage();
 
 		    img = new ImageIcon("greengrass.JPG");
@@ -48,13 +51,14 @@ public class Images {
 		    img = new ImageIcon("brickwall.JPG");
 		    this.wallImage = img.getImage();
 
-		    img = new ImageIcon("moneybags.JPG");
+		    img = new ImageIcon("theme2collectable.png");
 		    this.collectables = img.getImage();    
 		    
-		    img = new ImageIcon("greengrass.JPG");
+		    img = new ImageIcon("theme2goal.jpg");
 		    this.finaltile = img.getImage();
 
             //img = new ImageIcon(this themes frame background)
+		    img = new ImageIcon("theme2wall.jpg");
             this.frameBackground = img.getImage();
       } else if(theme == 3){
 		   ImageIcon img = new ImageIcon("Superman.png");
@@ -116,5 +120,28 @@ public class Images {
 
     public Image getFrameBackground() {
         return this.frameBackground;
+    }
+    
+    public int getTheme(){
+    	return this.theme;
+    }
+    
+    public String getInstructions(){
+    	String instructions = null;
+    	if(theme == 1){
+    		instructions = " help meee ";
+    	}
+    	else if(theme == 2){
+    		instructions = "Help Pooh Bear Return Home, if there is honey "
+    				+ "collect all of them and then return home";
+    	} 
+    	else if (theme == 3){
+    		instructions = " up the blues";
+    	}
+    	else{
+    		instructions = " loool";
+    	}
+    	return instructions;
+    	
     }
 }
