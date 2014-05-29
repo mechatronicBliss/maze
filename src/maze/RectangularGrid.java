@@ -8,40 +8,72 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
 
+/**
+ * A rectangular grid of tiles.
+ */
 public class RectangularGrid implements Grid {
 	private int size;
 	private ArrayList< ArrayList<Tile> > tiles;
 	
+	/**
+	 * Constructs a new rectangular grid of a specified size and difficulty
+	 * @param size required size
+	 * @param p difficulty parameter
+	 */
 	public RectangularGrid(int size, double p) {
 		this.size = size;
 		RectangularGridGenerator generator = new RandomDFS(size, p);
 		this.tiles = generator.generate();
 	}
 	
+	/**
+	 * Retrieves the 2D array of tiles
+	 * @return tile array
+	 */
 	public ArrayList<ArrayList<Tile>> getTiles() {
 		return tiles;
 	}
 	
+	/**
+	 * Retrieves the size
+	 * @return size
+	 */
 	public int getSize() {
 		return size;
 	}
 	
+	/**
+	 * Checks if a move from a specified tile in a certain direction is valid
+	 * @precondition direction is either Tile.NORTH, Tile.EAST, Tile.SOUTH or Tile.WEST
+	 * @param tile current tile
+	 * @param direction intended move direction
+	 * @return whether or not the move is possible
+	 */
 	public boolean isValidMove(Tile tile, Integer direction) {
 		return tile.canMove(direction);
 	}
 	
+	/**
+	 * Retrieve start position
+	 * @return start position
+	 */
 	public Tile getSource() {
 		return tiles.get(0).get(0);
 	}
 
+	/**
+	 * Retrieve finish position
+	 * @return finish position
+	 */
 	public Tile getDestination() {
 		return tiles.get(size-1).get(size-1);
 	}
 	
 	/**
-	 * @param tile
-	 * @param direction
-	 * @return
+	 * Retrieve the neighbour of a specified tile in a certain direction, ignoring walls
+	 * @param tile current tile
+	 * @param direction direction
+	 * @return neighbouring tile, or null if none exists
 	 */
 	public Tile getNeighbour(Tile tile, Integer direction) {
 		Tile ret = null;
@@ -60,13 +92,10 @@ public class RectangularGrid implements Grid {
 		return ret;
 	}
 	
-	/**does a BFS to find the goal
-	 * and returns the path as a stack<Tile>
-	 * 
-	 * @param grid
-	 * @param start
-	 * @param goal
-	 * @return
+	/**
+	 * Performs a BFS to find the shortest path to the goal
+	 * @param current current tile
+	 * @return sequence of tiles to traverse to reach the goal
 	 */
 	public Stack<Tile> getHelp(Tile current) {
 		
@@ -85,8 +114,9 @@ public class RectangularGrid implements Grid {
 		while (!toVisit.isEmpty() && !found) {
 			Tile tile = toVisit.poll();
 			seen.add(tile);
-			
+		
 			if (tile.equals(goal)) {
+				// if we have reached the goal, form the stack of parents from the BFS tree
 				found = true;
 				while (parents.get(tile) != null) {
 					tmp = parents.get(tile);
@@ -94,6 +124,7 @@ public class RectangularGrid implements Grid {
 					tile = tmp;
 				}
 			} else {
+				// otherwise try moving in each direction
 				if (tile.canMove(Tile.NORTH)) {
 					tmp = getNeighbour(tile, Tile.NORTH);
 					if (!seen.contains(tmp)) {
