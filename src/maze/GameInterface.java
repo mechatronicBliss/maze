@@ -15,6 +15,7 @@ public class GameInterface implements ActionListener{
     private int theme;
     private JPanel sideBar;
     private boolean useCollectables;
+    private String victory;
 	public GameInterface() {
 		size = 10;
 		p = 0.25;
@@ -24,6 +25,7 @@ public class GameInterface implements ActionListener{
         this.theme = 1;
 	}
 	private void displayMenu() {
+        this.victory = "Much Victory!";
         this.theme = 1;
         this.size = 10;
         this.p = 0.25;
@@ -155,6 +157,7 @@ public class GameInterface implements ActionListener{
         }
         else if(e.getActionCommand().equals("theme1")) {
             theme = 1;
+            this.victory = "Much Victory!";
         }
         else if(e.getActionCommand().equals("theme2")) {
             theme = 2;
@@ -164,6 +167,7 @@ public class GameInterface implements ActionListener{
         }
         else if(e.getActionCommand().equals("theme4")) {
             theme = 4;
+            this.victory = "The humans are dead";
         }
 	}
 	public int getDifficulty() {
@@ -183,9 +187,11 @@ public class GameInterface implements ActionListener{
     public void restart() {
         gameFrame.setVisible(false);
         gameFrame = new JFrame();
+        this.victory = "Much Victory!";
         displayMenu();
     }
-    private void openCustom() {
 
+    public String getVictoryMessage() {
+        return victory;
     }
 }

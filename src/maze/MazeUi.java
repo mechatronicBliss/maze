@@ -36,7 +36,6 @@ public class MazeUi extends JPanel {
         this.usingCollectables = usingCollectables;
         //creating new player
         m.getGrid().getTiles().get(0).get(0).setPlayer(true);
-        //player = m.getPlayer();
         
         for(int i = 0; i < size; i++) {
             boxes.add(i, new ArrayList<Box>());
@@ -98,14 +97,14 @@ public class MazeUi extends JPanel {
         if(playerX == size -1 && playerY == size -1 && usingCollectables){
         	
         	if(collectables == size) {
-        		JOptionPane.showMessageDialog(null, "You Win!");
+        		JOptionPane.showMessageDialog(null, gameController.getVictoryMessage());
         		gameController.restart();
         	} else {
         		JOptionPane.showMessageDialog(null, "please collect all the collectables");
         	}
         }
         else if(playerX == size -1 && playerY == size -1 && !usingCollectables) {
-            JOptionPane.showMessageDialog(null, "You Win!");
+            JOptionPane.showMessageDialog(null, gameController.getVictoryMessage());
             gameController.restart();
         }
         b = boxes.get(playerY).get(playerX);
@@ -117,12 +116,10 @@ public class MazeUi extends JPanel {
             }
             b.setCollectable(false);
         }
-        //boxes.get(playerY).get(playerX).setCollectable(false);
     }
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(imgs.getFrameBackground(), 0, 0, 1400, 1000, null);
-        //g2d.drawImage(mazeBackground, 0, 0, (pixelSize), (pixelSize), null);
     }
 }
