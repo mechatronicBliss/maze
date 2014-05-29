@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class GameInterface extends JComponent implements ActionListener{
+public class GameInterface implements ActionListener{
 	private int size;
 	private double p;
 	private GameState gameState;
@@ -14,7 +14,6 @@ public class GameInterface extends JComponent implements ActionListener{
     private MazeUi m;
     private int theme;
     private JPanel sideBar;
-    
     private boolean useCollectables;
 	public GameInterface() {
 		size = 10;
@@ -35,30 +34,28 @@ public class GameInterface extends JComponent implements ActionListener{
 		JButton startButton = new JButton("Start");
 		startButton.setActionCommand("start");
 		startButton.addActionListener(this);
-		startButton.setFont(new Font("Arial", Font.BOLD, 20));
-		
 		JButton instructions = new JButton("Instructions");
 		instructions.setActionCommand("showInstructions");
 		instructions.addActionListener(this);
-		instructions.setFont(new Font("Arial", Font.BOLD, 20));
+		JButton custom = new JButton("custom");
 		
-		//JButton custom = new JButton("custom");
-		
-		//radio buttons 
 		JRadioButton easy = new JRadioButton("Easy");
 		easy.setActionCommand("e");
 		easy.setSelected(true);
-		easy.setForeground(Color.yellow);
 		easy.addActionListener(this);
 		JRadioButton medium = new JRadioButton("Medium");
 		medium.setActionCommand("m");
-		medium.setForeground(Color.yellow);
 		medium.addActionListener(this);
 		JRadioButton hard = new JRadioButton("Hard");
 		hard.setActionCommand("h");
-		hard.setForeground(Color.yellow);
 		hard.addActionListener(this);
 
+
+
+        /*sideBar = new JPanel(new GridBagLayout());
+        sideBar.setOpaque(false);
+        sideBar.add(exit);    */
+		
 		//group the radios
 		ButtonGroup group = new ButtonGroup();
 		group.add(easy);
@@ -66,20 +63,18 @@ public class GameInterface extends JComponent implements ActionListener{
 		group.add(hard);
 		
 		menuPanel = new JPanel(new GridBagLayout());
-        menuPanel.setBackground(Color.BLACK);
+        menuPanel.setBackground(Color.darkGray);
 		GridBagConstraints c = new GridBagConstraints();
-		
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 1;
+		c.gridx = 0;
 		c.gridy = 0;
         menuPanel.add(instructions, c);
 		
 		c.gridx = 1;
-		c.gridy = 5;
         menuPanel.add(startButton, c);
 		
-		//c.gridx = 2;
-       // menuPanel.add(custom, c);
+		c.gridx = 2;
+        menuPanel.add(custom, c);
 		
 		c.gridx = 0;
 		c.gridy = 1;
@@ -88,33 +83,27 @@ public class GameInterface extends JComponent implements ActionListener{
         menuPanel.add(medium, c);
 		c.gridy = 3;
         menuPanel.add(hard, c);
-        
         c.gridx = 2;
         c.gridy = 2;
+
         JCheckBox collectables = new JCheckBox("Collectables");
         collectables.setActionCommand("collect");
         collectables.addActionListener(this);
-        collectables.setForeground(Color.yellow);
         menuPanel.add(collectables, c);
-       
         c.gridx = 1;
         c.gridy = 1;
-        JRadioButton themeOne = new JRadioButton("Theme 1");
+        JRadioButton themeOne = new JRadioButton("IRON MAN!");
         themeOne.setActionCommand("theme1");
         themeOne.setSelected(true);
         themeOne.addActionListener(this);
-        themeOne.setForeground(Color.yellow);
         JRadioButton themeTwo = new JRadioButton("Theme 2");
         themeTwo.setActionCommand("theme2");
         themeTwo.addActionListener(this);
-        themeTwo.setForeground(Color.yellow);
         JRadioButton themeThree = new JRadioButton("Theme 3");
         themeThree.setActionCommand("theme3");
         themeThree.addActionListener(this);
-        themeThree.setForeground(Color.yellow);
-        JRadioButton themeFour = new JRadioButton("Theme 4");
+        JRadioButton themeFour = new JRadioButton("Space");
         themeFour.setActionCommand("theme4");
-        themeFour.setForeground(Color.yellow);
         themeFour.addActionListener(this);
         
         ButtonGroup themes = new ButtonGroup();
@@ -199,5 +188,4 @@ public class GameInterface extends JComponent implements ActionListener{
     private void openCustom() {
 
     }
-    
 }
