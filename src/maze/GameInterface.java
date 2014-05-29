@@ -86,7 +86,7 @@ public class GameInterface implements ActionListener{
 		c.gridy = 3;
         menuPanel.add(hard, c);
         c.gridx = 2;
-        c.gridy = 2;
+        c.gridy = 1;
 
         JCheckBox collectables = new JCheckBox("Collectables");
         collectables.setActionCommand("collect");
@@ -107,18 +107,21 @@ public class GameInterface implements ActionListener{
         JRadioButton themeFour = new JRadioButton("Space");
         themeFour.setActionCommand("theme4");
         themeFour.addActionListener(this);
-        
+        JLabel themeLabel = new JLabel();
+        themeLabel.setText("Themes");
         ButtonGroup themes = new ButtonGroup();
         themes.add(themeOne);
         themes.add(themeTwo);
         themes.add(themeThree);
         themes.add(themeFour);
-        menuPanel.add(themeOne, c);
+        menuPanel.add(themeLabel, c);
         c.gridy = 2;
-        menuPanel.add(themeTwo, c);
+        menuPanel.add(themeOne, c);
         c.gridy = 3;
-        menuPanel.add(themeThree, c);
+        menuPanel.add(themeTwo, c);
         c.gridy = 4;
+        menuPanel.add(themeThree, c);
+        c.gridy = 5;
         menuPanel.add(themeFour, c);
 		gameFrame.add(menuPanel);
 		gameFrame.setVisible(true);
