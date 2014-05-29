@@ -33,7 +33,7 @@ public class Images {
 		    img = new ImageIcon("theme1pickup.png");
 		    this.collectables = img.getImage();  
 		    
-		    img = new ImageIcon("greengrass.JPG");
+		    img = new ImageIcon("doge.jpg");
 		    this.finaltile = img.getImage();
 
             img = new ImageIcon("ironmansIsAwesome.jpg");
