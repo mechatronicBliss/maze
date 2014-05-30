@@ -152,11 +152,5 @@ public class MazeUi extends JPanel {
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(imgs.getFrameBackground(), 0, 0, 1400, 1000, null);
-
-        
-   		 if(instructions){
-   	        JOptionPane.showMessageDialog(null, imgs.getInstructions());
-   	        instructions = false;
-   	       }
     }
 }

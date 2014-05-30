@@ -172,6 +172,8 @@ public class GameInterface implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("start")) {
 			System.out.println("Loading Game");
+            Images im = new Images(theme);
+            JOptionPane.showMessageDialog(null, im.getInstructions());
 			startGame();
 		}
 		else if(e.getActionCommand().equals("e")) {
