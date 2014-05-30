@@ -4,6 +4,16 @@ import javax.swing.*;
 
 import java.awt.*;
 
+/**
+ * 
+ * @author Simon Rob, Simon Briggs, Jason Le, Raveen de
+ *
+ */
+
+/**
+ * The front end representation of tile
+ *
+ */
 public class Box extends JComponent {
 	private boolean left;
 	private boolean right;
@@ -24,6 +34,19 @@ public class Box extends JComponent {
     private final int mazeSize = 600;
     private int pixelSize;
     
+    /**
+     * This class constructs and paints each tile in the
+     * maze corresponding to whether they have the 
+     * left, right, top and bottom walls there.
+     * Additionally it also pains each tile corresponding to
+     * the theme the user choose
+     * @param size
+     * @param left is this wall active
+     * @param right is this wall active
+     * @param top is this wall active
+     * @param bottom is this wall active
+     * @param all a class in which contains all the images
+     */
 	public Box(int size, boolean left, boolean right, boolean top, boolean bottom, Images all) {
 		this.top =top;
 		this.bottom = bottom;
@@ -82,21 +105,38 @@ public class Box extends JComponent {
             System.out.println(character);
         }
 	}
+	
+	/**
+	 * sets the box to have a player inside it
+	 */
     public void activate() {
         this.active = true;
         repaint();
     }
+    
+    /**
+     * sets the box to not have a player in it
+     */
     public void deactivate() {
         this.active = false;
         repaint();
     }
+    /**
+     * sets the final box when all collectables have
+     * been collected
+     */
     public void activateWinningBox() {
         this.isFinal = true;
         repaint();
     }
+    
     public boolean isCollectable() {
         return this.hasCollectable;
     }
+    /**
+     * sets this box to contain a collectable
+     * @param hasCollectable does this box have a collectable
+     */
     public void setCollectable(boolean hasCollectable) {
         this.hasCollectable = hasCollectable;
         repaint();

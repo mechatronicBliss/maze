@@ -4,8 +4,18 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+/**
+ * 
+ * @author Simon Rob, Simon Briggs, Jason Le, Raveen de
+ *
+ */
+
+/**
+ * A class which contains all the images and 
+ * what theme the user has choosen
+ *
+ */
 public class Images {
-	
 	//the image of player 
 		private Image player; 
 		//the image of the grass
@@ -20,7 +30,13 @@ public class Images {
         private Image frameBackground;
         
         int theme;
-		
+	
+    /**
+     * Images sets what images are to be returned
+     * to Maze UI and Box according to what theme the 
+     * user has choosen
+     * @param theme what theme the user has choosen
+     */
 	public Images(int theme){
 		this.theme = theme;
       if(theme == 1){
@@ -126,6 +142,10 @@ public class Images {
     	return this.theme;
     }
     
+    /**
+     * getInstructions returns the instructions in accordance to the themes
+     * @return the instructions in accordance to the theme
+     */
     public String getInstructions(){
     	String instructions = null;
     	if(theme == 1){

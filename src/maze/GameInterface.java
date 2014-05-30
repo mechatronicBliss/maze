@@ -4,8 +4,22 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+/**
+ * 
+ * @author Simon Rob, Simon Briggs, Jason Le, Raveen de
+ *
+ */
 
-public class GameInterface extends JComponent implements ActionListener{
+/**
+ * 
+ * Game interface acts as the class that represents the initial
+ * game state, which is the set up page.
+ * Game interface contains the settings and the themes 
+ * in which the user can choose from, and additionally 
+ * sets the maze game interface, when the user presses start.
+ *
+ */
+public class GameInterface implements ActionListener{
 	private int size;
 	private double p;
 	private GameState gameState;
@@ -25,6 +39,10 @@ public class GameInterface extends JComponent implements ActionListener{
         this.useCollectables = false;
         this.theme = 1;
 	}
+	/**
+	 * The display menu in the initial screen
+	 * This is in a done in a grid bag layout
+	 */
 	private void displayMenu() {
         this.victory = "Much Victory!";
         this.theme = 1;
@@ -147,6 +165,10 @@ public class GameInterface extends JComponent implements ActionListener{
 	}
 	
 	@Override
+	 /**
+	  * Sets a action command for each button
+	  * in the display menu
+	  */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("start")) {
 			System.out.println("Loading Game");
@@ -192,9 +214,19 @@ public class GameInterface extends JComponent implements ActionListener{
             this.victory = "The humans are dead";
         }
 	}
+	/**
+	 * 
+	 * @return the size of the maze (as size corresponded to difficulty
+	 */
 	public int getDifficulty() {
 		return size;
 	}
+	
+	/**
+	 * The start game method in which takes in the 
+	 * conditions the user has choose and implements a
+	 * maze gamestate 
+	 */
 	private void startGame() {
         gameFrame.remove(menuPanel);
         gameState = new GameState(size, p);
@@ -206,6 +238,12 @@ public class GameInterface extends JComponent implements ActionListener{
 		gameFrame.add(m, BorderLayout.CENTER);
         gameFrame.requestFocusInWindow();
 	}
+	
+	/**
+	 * This method is for the victory gamestate
+	 * the method allows the user to return from the 
+	 * maze gamestate to the initial gamestate
+	 */
     public void restart() {
         gameFrame.setVisible(false);
         gameFrame = new JFrame();
