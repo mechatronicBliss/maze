@@ -178,14 +178,14 @@ public class GameInterface implements ActionListener{
 		}
 		else if(e.getActionCommand().equals("e")) {
 			size = 10;
-			p = 0.25;
+			p = 0.10;
 		}
 		else if(e.getActionCommand().equals("m")) {
 			size = 15;
-			p = 0.15;
+			p = 0.05;
 		}
 		else if(e.getActionCommand().equals("h")) {
-			size = 25;
+			size = 20;
 			p = 0;
 		}
 		else if(e.getActionCommand().equals("custom")) {
