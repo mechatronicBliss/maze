@@ -80,10 +80,10 @@ public class Images {
 		   ImageIcon img = new ImageIcon("Superman.png");
 		    this.player = img.getImage();
 
-		    img = new ImageIcon("greengrass.JPG");
+		    img = new ImageIcon("glassTiles.JPG");
 		    this.mazeBackground = img.getImage();
 
-		    img = new ImageIcon("brickwall.JPG");
+		    img = new ImageIcon("kryptonite.jpg");
 		    this.wallImage = img.getImage();
 
 		    img = new ImageIcon("moneybags.JPG");
@@ -92,8 +92,8 @@ public class Images {
 		    img = new ImageIcon("greengrass.JPG");
 		    this.finaltile = img.getImage();
 
-          //img = new ImageIcon(this themes frame background)
-          this.frameBackground = img.getImage();
+            img = new ImageIcon("supermanBackground.jpg");
+            this.frameBackground = img.getImage();
       } else if(theme == 4){
 		   ImageIcon img = new ImageIcon("theme4char.jpg");
 		    this.player = img.getImage();
@@ -149,7 +149,7 @@ public class Images {
     public String getInstructions(){
     	String instructions = null;
     	if(theme == 1){
-    		instructions = " help meee ";
+    		instructions = "Help Iron Man find his way out of the maze.\n If there are any batteries, you must power up to get to the finish!";
     	}
     	else if(theme == 2){
     		instructions = "Help Pooh Bear Return Home, if there is honey "

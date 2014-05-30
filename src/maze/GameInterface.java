@@ -125,12 +125,12 @@ public class GameInterface implements ActionListener{
        
         c.gridx = 1;
         c.gridy = 1;
-        JRadioButton themeOne = new JRadioButton("Theme1");
+        JRadioButton themeOne = new JRadioButton("Iron Man");
         themeOne.setActionCommand("theme1");
         themeOne.setSelected(true);
         themeOne.addActionListener(this);
         themeOne.setForeground(Color.yellow);
-        JRadioButton themeTwo = new JRadioButton("Theme2");
+        JRadioButton themeTwo = new JRadioButton("Pooh Bear");
         themeTwo.setActionCommand("theme2");
         themeTwo.addActionListener(this);
         themeTwo.setForeground(Color.yellow);
@@ -138,7 +138,7 @@ public class GameInterface implements ActionListener{
         themeThree.setActionCommand("theme3");
         themeThree.addActionListener(this);
         themeThree.setForeground(Color.yellow);
-        JRadioButton themeFour = new JRadioButton("Theme4");
+        JRadioButton themeFour = new JRadioButton("Space");
         themeFour.setActionCommand("theme4");
         themeFour.setForeground(Color.yellow);
         themeFour.addActionListener(this);
