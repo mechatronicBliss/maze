@@ -85,10 +85,10 @@ public class Box extends JComponent {
         if(hasCollectable) {
             boolean character = g2d.drawImage(collectable, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
         }
-        if(left) {
+        if(left && !(all.getTheme() == 4)) {
             g2d.drawImage(wallImage, 0, 0, (pixelSize) / 8, (pixelSize), null);
         }
-        if(top) {
+        if(top && !(all.getTheme() == 4)) {
             g2d.drawImage(wallImage, 0, 0, (pixelSize), (pixelSize) / 8, null);
         }
 
@@ -103,6 +103,12 @@ public class Box extends JComponent {
             System.out.println(" enters player loop");
             boolean character = g2d.drawImage(player, 0, 0, (pixelSize) - 3, (pixelSize) - 3, null);
             System.out.println(character);
+        }
+        if(top && all.getTheme() == 4) {
+            g2d.drawImage(wallImage, 0, 0, (pixelSize), (pixelSize) / 8, null);
+        }
+        if(left && all.getTheme() == 4) {
+            g2d.drawImage(wallImage, 0, 0, (pixelSize) / 8, (pixelSize), null);
         }
 	}
 	
