@@ -9,6 +9,7 @@ public class WeightedRandomDFS implements RectangularGridGenerator {
 
 	private int size;
 	private double difficulty;
+	private static final double EPS = 1e-6;
 	
 	/**
 	 * Constructs a new WeightedRandomDFS object to generate mazes of a specified size and difficulty
@@ -85,7 +86,7 @@ public class WeightedRandomDFS implements RectangularGridGenerator {
 		}
 		
 		// repeat until all possible moves made
-		while (pN + pE + pS + pW > 1e-6) {
+		while (pN + pE + pS + pW > EPS) {
 			// normalise
 			double total = pN + pE + pS + pW;
 			pN /= total;
