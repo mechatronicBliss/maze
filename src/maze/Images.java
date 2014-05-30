@@ -163,7 +163,7 @@ public class Images {
     	}
     	else{
     		instructions = "The year is 1AD (hexadecimal, of course!), and the Omega II galaxy is doomed.\n" + 
-    				"Use the arrow keys or WASD reach the wormhole and escape!\n" + 
+    				"Use the arrow keys or WASD to reach the wormhole and escape!\n" + 
     				"If there are any orbs, you must collect them all to reveal the wormhole.";
     	}
     	return instructions;
