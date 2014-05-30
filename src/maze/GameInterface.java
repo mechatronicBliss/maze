@@ -52,12 +52,12 @@ public class GameInterface implements ActionListener{
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setBounds(100, 100, 600, 600);
 		//make some buttons
-		JButton startButton = new JButton("Start");
+		JButton startButton = new MazeButton("Start", 200, 50);
 		startButton.setActionCommand("start");
 		startButton.addActionListener(this);
 		startButton.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JButton instructions = new JButton("Instructions");
+		JButton instructions = new MazeButton("Instructions", 200, 50);
 		instructions.setActionCommand("showInstructions");
 		instructions.addActionListener(this);
 		instructions.setFont(new Font("Arial", Font.BOLD, 15));
