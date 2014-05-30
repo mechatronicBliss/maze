@@ -96,7 +96,7 @@ public class GameInterface implements ActionListener{
         menuPanel.add(instructions, c);
 		
 		c.gridx = 1;
-		c.gridy = 7;
+		c.gridy = 6;
         menuPanel.add(startButton, c);
 		//c.gridx = 2;
        // menuPanel.add(custom, c);
