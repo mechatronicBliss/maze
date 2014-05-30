@@ -68,15 +68,15 @@ public class GameInterface implements ActionListener{
 		JRadioButton easy = new JRadioButton("Easy");
 		easy.setActionCommand("e");
 		easy.setSelected(true);
-		easy.setForeground(Color.yellow);
+		easy.setForeground(Color.CYAN);
 		easy.addActionListener(this);
 		JRadioButton medium = new JRadioButton("Medium");
 		medium.setActionCommand("m");
-		medium.setForeground(Color.yellow);
+		medium.setForeground(Color.CYAN);
 		medium.addActionListener(this);
 		JRadioButton hard = new JRadioButton("Hard");
 		hard.setActionCommand("h");
-		hard.setForeground(Color.yellow);
+		hard.setForeground(Color.CYAN);
 		hard.addActionListener(this);
 
 		//group the radios
@@ -105,7 +105,7 @@ public class GameInterface implements ActionListener{
 		c.gridy = 1;
 		JLabel levelLabel = new JLabel();
 		levelLabel.setText("Levels");
-        levelLabel.setForeground(Color.yellow);
+        levelLabel.setForeground(Color.CYAN);
         menuPanel.add(levelLabel, c);
         c.gridy = 2;
         menuPanel.add(easy, c);
@@ -120,7 +120,7 @@ public class GameInterface implements ActionListener{
         JCheckBox collectables = new JCheckBox("Collectables");
         collectables.setActionCommand("collect");
         collectables.addActionListener(this);
-        collectables.setForeground(Color.yellow);
+        collectables.setForeground(Color.CYAN);
         menuPanel.add(collectables, c);
        
         c.gridx = 1;
@@ -129,22 +129,22 @@ public class GameInterface implements ActionListener{
         themeOne.setActionCommand("theme1");
         themeOne.setSelected(true);
         themeOne.addActionListener(this);
-        themeOne.setForeground(Color.yellow);
+        themeOne.setForeground(Color.CYAN);
         JRadioButton themeTwo = new JRadioButton("Pooh Bear");
         themeTwo.setActionCommand("theme2");
         themeTwo.addActionListener(this);
-        themeTwo.setForeground(Color.yellow);
+        themeTwo.setForeground(Color.CYAN);
         JRadioButton themeThree = new JRadioButton("Superman");
         themeThree.setActionCommand("theme3");
         themeThree.addActionListener(this);
-        themeThree.setForeground(Color.yellow);
+        themeThree.setForeground(Color.CYAN);
         JRadioButton themeFour = new JRadioButton("Space");
         themeFour.setActionCommand("theme4");
-        themeFour.setForeground(Color.yellow);
+        themeFour.setForeground(Color.CYAN);
         themeFour.addActionListener(this);
         JLabel themeLabel = new JLabel();
         themeLabel.setText("Themes");
-        themeLabel.setForeground(Color.yellow);
+        themeLabel.setForeground(Color.CYAN);
         ButtonGroup themes = new ButtonGroup();
         themes.add(themeOne);
         themes.add(themeTwo);
