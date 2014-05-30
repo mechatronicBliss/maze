@@ -149,21 +149,21 @@ public class Images {
     public String getInstructions(){
     	String instructions = null;
     	if(theme == 1){
-    		instructions = "Help Iron Man find his way out of the maze.\nIf there are any batteries, you must power up to get to the finish!";
+    		instructions = "Use the arrow keys or WASD to help Iron Man find his way out of the maze.\nIf there are any batteries, you must power up to get to the finish!";
     	}
     	else if(theme == 2){
-    		instructions = "Help Pooh Bear Return Home, if there is honey "
+    		instructions = "Use the arrow keys or WASD to help Pooh Bear Return Home, if there is honey "
     				+ "collect all of them and then return home";
     	} 
     	else if (theme == 3){
     		instructions = "Faster than a speeding bullet,\n" +
                     "Able to leap tall buildings in a single bound,\n" +
-                    "Superman needs your help to find his way to the fortress of solitude!\n" +
+                    "Use the arrow keys or WASD to help Superman to find his way to the fortress of solitude!\n" +
                     "Collect any wonderful women you might find along the wayyyyyy!";
     	}
     	else{
     		instructions = "The year is 1AD (hexadecimal, of course!), and the Omega II galaxy is doomed.\n" + 
-    				"Use the arrow keys or WASD to reach the wormhole and escape!\n" + 
+    				"Use the arrow keys or WASD to reach the wormhole and escape!\n" +
     				"If there are any orbs, you must collect them all to reveal the wormhole.";
     	}
     	return instructions;
