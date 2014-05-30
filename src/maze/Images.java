@@ -86,10 +86,10 @@ public class Images {
 		    img = new ImageIcon("kryptonite.jpg");
 		    this.wallImage = img.getImage();
 
-		    img = new ImageIcon("moneybags.JPG");
+		    img = new ImageIcon("wonderWoman.jpg");
 		    this.collectables = img.getImage();  
 		    
-		    img = new ImageIcon("greengrass.JPG");
+		    img = new ImageIcon("fortressofsolitude.jpg");
 		    this.finaltile = img.getImage();
 
             img = new ImageIcon("supermanBackground.jpg");
@@ -149,14 +149,17 @@ public class Images {
     public String getInstructions(){
     	String instructions = null;
     	if(theme == 1){
-    		instructions = "Help Iron Man find his way out of the maze.\n If there are any batteries, you must power up to get to the finish!";
+    		instructions = "Help Iron Man find his way out of the maze.\nIf there are any batteries, you must power up to get to the finish!";
     	}
     	else if(theme == 2){
     		instructions = "Help Pooh Bear Return Home, if there is honey "
     				+ "collect all of them and then return home";
     	} 
     	else if (theme == 3){
-    		instructions = " up the blues";
+    		instructions = "Faster than a speeding bullet,\n" +
+                    "Able to leap tall buildings in a single bound,\n" +
+                    "Superman needs your help to find his way to the fortress of solitude!\n" +
+                    "Collect any wonderful women you might find along the wayyyyyy!";
     	}
     	else{
     		instructions = "The year is 1AD (hexadecimal, of course!), and the Omega II galaxy is doomed.\n" + 

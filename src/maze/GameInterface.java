@@ -134,7 +134,7 @@ public class GameInterface implements ActionListener{
         themeTwo.setActionCommand("theme2");
         themeTwo.addActionListener(this);
         themeTwo.setForeground(Color.yellow);
-        JRadioButton themeThree = new JRadioButton("Theme3");
+        JRadioButton themeThree = new JRadioButton("Superman");
         themeThree.setActionCommand("theme3");
         themeThree.addActionListener(this);
         themeThree.setForeground(Color.yellow);
@@ -206,9 +206,11 @@ public class GameInterface implements ActionListener{
         }
         else if(e.getActionCommand().equals("theme2")) {
             theme = 2;
+            this.victory = "Mmmmm, Honeyyyy!";
         }
         else if(e.getActionCommand().equals("theme3")) {
             theme = 3;
+            this.victory = "Up, up and away!";
         }
         else if(e.getActionCommand().equals("theme4")) {
             theme = 4;
