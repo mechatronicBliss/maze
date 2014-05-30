@@ -48,7 +48,7 @@ public class MazeUi extends JPanel {
                 c.gridx = j;
                 
                 Tile t = m.getGrid().getTiles().get(j).get(i);
-        		Box b = new Box(size, t.hasWall(t.WEST), t.hasWall(t.EAST), t.hasWall(t.NORTH), t.hasWall(t.SOUTH), imgs);
+        		Box b = new Box(size, t.hasWall(Tile.WEST), t.hasWall(Tile.EAST), t.hasWall(Tile.NORTH), t.hasWall(Tile.SOUTH), imgs);
         		this.add(b,c);
                 boxes.get(i).add(b);
         	}
@@ -103,7 +103,7 @@ public class MazeUi extends JPanel {
         		JOptionPane.showMessageDialog(null, gameController.getVictoryMessage());
         		gameController.restart();
         	} else {
-        		JOptionPane.showMessageDialog(null, "please collect all the collectables");
+        		JOptionPane.showMessageDialog(null, "Please collect all the collectables.");
         	}
         }
         else if(playerX == size -1 && playerY == size -1 && !usingCollectables) {

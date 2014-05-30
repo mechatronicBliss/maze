@@ -174,8 +174,7 @@ public class GameInterface extends JComponent implements ActionListener{
             useCollectables = !useCollectables;
         }
         else if(e.getActionCommand().equals("showInstructions")) {
-            JOptionPane.showMessageDialog(null, "Please Choose a Level"
-            		+ " ,a Theme and press Start");
+            JOptionPane.showMessageDialog(null, "Please choose a level and a theme, then press Start.");
         }
         else if(e.getActionCommand().equals("theme1")) {
             theme = 1;
@@ -189,7 +188,7 @@ public class GameInterface extends JComponent implements ActionListener{
         }
         else if(e.getActionCommand().equals("theme4")) {
             theme = 4;
-            this.victory = "The humans are dead";
+            this.victory = "Congratulations! You have escaped.";
         }
 	}
 	public int getDifficulty() {
