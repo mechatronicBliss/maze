@@ -22,6 +22,7 @@ public class RectangularGrid implements Grid {
 	 */
 	public RectangularGrid(int size, double p) {
 		this.size = size;
+		// generate grid using Strategy design pattern
 		RectangularGridGenerator generator = new RandomDFS(size, p);
 		this.tiles = generator.generate();
 	}
