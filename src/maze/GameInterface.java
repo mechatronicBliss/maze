@@ -92,15 +92,15 @@ public class GameInterface implements ActionListener{
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 0;
+        c.ipady = 10;
         menuPanel.add(instructions, c);
 		
 		c.gridx = 1;
-		c.gridy = 6;
+		c.gridy = 7;
         menuPanel.add(startButton, c);
-		
 		//c.gridx = 2;
        // menuPanel.add(custom, c);
-		
+		c.ipady = 0;
 		c.gridx = 0;
 		c.gridy = 1;
 		JLabel levelLabel = new JLabel();
